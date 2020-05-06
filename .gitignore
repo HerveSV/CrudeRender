@@ -1,3 +1,6 @@
+#xcodeproj files
+.xcodeproj
+
 
 CrudeRender.xcodeproj
 CrudeRender/OpenGL-Core
