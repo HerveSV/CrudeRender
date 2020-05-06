@@ -26,7 +26,7 @@ int main(int argc, const char * argv[]) {
 // spdlog usage example
 
 #include <cstdio>
-
+#include "glm/gtc/matrix_transform.hpp"
 void load_levels_example();
 void stdout_logger_example();
 void basic_example();
