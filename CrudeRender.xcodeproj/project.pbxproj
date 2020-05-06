@@ -25,6 +25,52 @@
 /* Begin PBXFileReference section */
 		09DBFED624628A7E002B1023 /* CrudeRender */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CrudeRender; sourceTree = BUILT_PRODUCTS_DIR; };
 		09DBFED924628A7E002B1023 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		09DBFEE224628AEE002B1023 /* premake5.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = premake5.lua; sourceTree = "<group>"; };
+		09DBFEEA24628AEE002B1023 /* Glad.pdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Glad.pdb; sourceTree = "<group>"; };
+		09DBFEEB24628AEE002B1023 /* Glad.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = Glad.lib; sourceTree = "<group>"; };
+		09DBFEEE24628AEE002B1023 /* khrplatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
+		09DBFEF024628AEE002B1023 /* glad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
+		09DBFEF124628AEE002B1023 /* premake5.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = premake5.lua; sourceTree = "<group>"; };
+		09DBFEF324628AEE002B1023 /* glad.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
+		09DBFEF524628AEE002B1023 /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		09DBFEF624628AEE002B1023 /* stb_image.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stb_image.cpp; sourceTree = "<group>"; };
+		09DBFEFA24628AEE002B1023 /* glpch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glpch.h; sourceTree = "<group>"; };
+		09DBFEFD24628AEE002B1023 /* WindowsWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WindowsWindow.cpp; sourceTree = "<group>"; };
+		09DBFEFE24628AEE002B1023 /* WindowsInput.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WindowsInput.cpp; sourceTree = "<group>"; };
+		09DBFEFF24628AEE002B1023 /* WindowsWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowsWindow.h; sourceTree = "<group>"; };
+		09DBFF0024628AEE002B1023 /* WindowsInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowsInput.h; sourceTree = "<group>"; };
+		09DBFF0124628AEE002B1023 /* glpch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = glpch.cpp; sourceTree = "<group>"; };
+		09DBFF0224628AEE002B1023 /* GLCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLCore.h; sourceTree = "<group>"; };
+		09DBFF0324628AEE002B1023 /* GLCoreUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLCoreUtils.h; sourceTree = "<group>"; };
+		09DBFF0624628AEE002B1023 /* Input.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Input.h; sourceTree = "<group>"; };
+		09DBFF0724628AEE002B1023 /* Log.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Log.cpp; sourceTree = "<group>"; };
+		09DBFF0824628AEE002B1023 /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
+		09DBFF0924628AEE002B1023 /* Application.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
+		09DBFF0A24628AEE002B1023 /* Layer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Layer.h; sourceTree = "<group>"; };
+		09DBFF0B24628AEE002B1023 /* Layer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = "<group>"; };
+		09DBFF0C24628AEE002B1023 /* KeyCodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyCodes.h; sourceTree = "<group>"; };
+		09DBFF0D24628AEE002B1023 /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
+		09DBFF0E24628AEE002B1023 /* Timestep.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timestep.h; sourceTree = "<group>"; };
+		09DBFF0F24628AEE002B1023 /* MouseButtonCodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MouseButtonCodes.h; sourceTree = "<group>"; };
+		09DBFF1024628AEE002B1023 /* LayerStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LayerStack.cpp; sourceTree = "<group>"; };
+		09DBFF1124628AEE002B1023 /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		09DBFF1224628AEE002B1023 /* Application.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
+		09DBFF1324628AEE002B1023 /* LayerStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayerStack.h; sourceTree = "<group>"; };
+		09DBFF1524628AEE002B1023 /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
+		09DBFF1624628AEE002B1023 /* OpenGLDebug.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLDebug.cpp; sourceTree = "<group>"; };
+		09DBFF1724628AEE002B1023 /* OrthographicCamera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrthographicCamera.cpp; sourceTree = "<group>"; };
+		09DBFF1824628AEE002B1023 /* OrthographicCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrthographicCamera.h; sourceTree = "<group>"; };
+		09DBFF1924628AEE002B1023 /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		09DBFF1A24628AEE002B1023 /* OrthographicCameraController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrthographicCameraController.h; sourceTree = "<group>"; };
+		09DBFF1B24628AEE002B1023 /* OrthographicCameraController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrthographicCameraController.cpp; sourceTree = "<group>"; };
+		09DBFF1C24628AEE002B1023 /* OpenGLDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenGLDebug.h; sourceTree = "<group>"; };
+		09DBFF1E24628AEE002B1023 /* ImGuiLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImGuiLayer.h; sourceTree = "<group>"; };
+		09DBFF1F24628AEE002B1023 /* ImGuiLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImGuiLayer.cpp; sourceTree = "<group>"; };
+		09DBFF2024628AEE002B1023 /* ImGuiBuild.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImGuiBuild.cpp; sourceTree = "<group>"; };
+		09DBFF2224628AEE002B1023 /* Event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		09DBFF2324628AEE002B1023 /* KeyEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyEvent.h; sourceTree = "<group>"; };
+		09DBFF2424628AEE002B1023 /* ApplicationEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplicationEvent.h; sourceTree = "<group>"; };
+		09DBFF2524628AEE002B1023 /* MouseEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MouseEvent.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +87,7 @@
 		09DBFECD24628A7E002B1023 = {
 			isa = PBXGroup;
 			children = (
+				09DBFEE124628AEE002B1023 /* OpenGL-Core */,
 				09DBFED824628A7E002B1023 /* CrudeRender */,
 				09DBFED724628A7E002B1023 /* Products */,
 			);
@@ -57,9 +104,255 @@
 		09DBFED824628A7E002B1023 /* CrudeRender */ = {
 			isa = PBXGroup;
 			children = (
+				09DBFF2724629764002B1023 /* src */,
+				09DBFF2624629750002B1023 /* vendor */,
 				09DBFED924628A7E002B1023 /* main.cpp */,
 			);
 			path = CrudeRender;
+			sourceTree = "<group>";
+		};
+		09DBFEE124628AEE002B1023 /* OpenGL-Core */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFEE224628AEE002B1023 /* premake5.lua */,
+				09DBFEE324628AEE002B1023 /* vendor */,
+				09DBFEF924628AEE002B1023 /* src */,
+			);
+			name = "OpenGL-Core";
+			path = "CrudeRender/OpenGL-Core";
+			sourceTree = "<group>";
+		};
+		09DBFEE324628AEE002B1023 /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = vendor;
+			sourceTree = "<group>";
+		};
+		09DBFEE424628AEE002B1023 /* imgui */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = imgui;
+			sourceTree = "<group>";
+		};
+		09DBFEE524628AEE002B1023 /* spdlog */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = spdlog;
+			sourceTree = "<group>";
+		};
+		09DBFEE624628AEE002B1023 /* Glad */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFEE724628AEE002B1023 /* bin */,
+				09DBFEEC24628AEE002B1023 /* include */,
+				09DBFEF124628AEE002B1023 /* premake5.lua */,
+				09DBFEF224628AEE002B1023 /* src */,
+			);
+			path = Glad;
+			sourceTree = "<group>";
+		};
+		09DBFEE724628AEE002B1023 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFEE824628AEE002B1023 /* Debug-windows-x86_64 */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		09DBFEE824628AEE002B1023 /* Debug-windows-x86_64 */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFEE924628AEE002B1023 /* Glad */,
+			);
+			path = "Debug-windows-x86_64";
+			sourceTree = "<group>";
+		};
+		09DBFEE924628AEE002B1023 /* Glad */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFEEA24628AEE002B1023 /* Glad.pdb */,
+				09DBFEEB24628AEE002B1023 /* Glad.lib */,
+			);
+			path = Glad;
+			sourceTree = "<group>";
+		};
+		09DBFEEC24628AEE002B1023 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFEED24628AEE002B1023 /* KHR */,
+				09DBFEEF24628AEE002B1023 /* glad */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		09DBFEED24628AEE002B1023 /* KHR */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFEEE24628AEE002B1023 /* khrplatform.h */,
+			);
+			path = KHR;
+			sourceTree = "<group>";
+		};
+		09DBFEEF24628AEE002B1023 /* glad */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFEF024628AEE002B1023 /* glad.h */,
+			);
+			path = glad;
+			sourceTree = "<group>";
+		};
+		09DBFEF224628AEE002B1023 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFEF324628AEE002B1023 /* glad.c */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		09DBFEF424628AEE002B1023 /* stb_image */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFEF524628AEE002B1023 /* stb_image.h */,
+				09DBFEF624628AEE002B1023 /* stb_image.cpp */,
+			);
+			path = stb_image;
+			sourceTree = "<group>";
+		};
+		09DBFEF724628AEE002B1023 /* glfw */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = glfw;
+			sourceTree = "<group>";
+		};
+		09DBFEF824628AEE002B1023 /* glm */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = glm;
+			sourceTree = "<group>";
+		};
+		09DBFEF924628AEE002B1023 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFEFA24628AEE002B1023 /* glpch.h */,
+				09DBFEFB24628AEE002B1023 /* Platform */,
+				09DBFF0124628AEE002B1023 /* glpch.cpp */,
+				09DBFF0224628AEE002B1023 /* GLCore.h */,
+				09DBFF0324628AEE002B1023 /* GLCoreUtils.h */,
+				09DBFF0424628AEE002B1023 /* GLCore */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		09DBFEFB24628AEE002B1023 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFEFC24628AEE002B1023 /* Windows */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
+		09DBFEFC24628AEE002B1023 /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFEFD24628AEE002B1023 /* WindowsWindow.cpp */,
+				09DBFEFE24628AEE002B1023 /* WindowsInput.cpp */,
+				09DBFEFF24628AEE002B1023 /* WindowsWindow.h */,
+				09DBFF0024628AEE002B1023 /* WindowsInput.h */,
+			);
+			path = Windows;
+			sourceTree = "<group>";
+		};
+		09DBFF0424628AEE002B1023 /* GLCore */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFF0524628AEE002B1023 /* Core */,
+				09DBFF1424628AEE002B1023 /* Util */,
+				09DBFF1D24628AEE002B1023 /* ImGui */,
+				09DBFF2124628AEE002B1023 /* Events */,
+			);
+			path = GLCore;
+			sourceTree = "<group>";
+		};
+		09DBFF0524628AEE002B1023 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFF0624628AEE002B1023 /* Input.h */,
+				09DBFF0724628AEE002B1023 /* Log.cpp */,
+				09DBFF0824628AEE002B1023 /* Core.h */,
+				09DBFF0924628AEE002B1023 /* Application.h */,
+				09DBFF0A24628AEE002B1023 /* Layer.h */,
+				09DBFF0B24628AEE002B1023 /* Layer.cpp */,
+				09DBFF0C24628AEE002B1023 /* KeyCodes.h */,
+				09DBFF0D24628AEE002B1023 /* Window.h */,
+				09DBFF0E24628AEE002B1023 /* Timestep.h */,
+				09DBFF0F24628AEE002B1023 /* MouseButtonCodes.h */,
+				09DBFF1024628AEE002B1023 /* LayerStack.cpp */,
+				09DBFF1124628AEE002B1023 /* Log.h */,
+				09DBFF1224628AEE002B1023 /* Application.cpp */,
+				09DBFF1324628AEE002B1023 /* LayerStack.h */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		09DBFF1424628AEE002B1023 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFF1524628AEE002B1023 /* Shader.h */,
+				09DBFF1624628AEE002B1023 /* OpenGLDebug.cpp */,
+				09DBFF1724628AEE002B1023 /* OrthographicCamera.cpp */,
+				09DBFF1824628AEE002B1023 /* OrthographicCamera.h */,
+				09DBFF1924628AEE002B1023 /* Shader.cpp */,
+				09DBFF1A24628AEE002B1023 /* OrthographicCameraController.h */,
+				09DBFF1B24628AEE002B1023 /* OrthographicCameraController.cpp */,
+				09DBFF1C24628AEE002B1023 /* OpenGLDebug.h */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		09DBFF1D24628AEE002B1023 /* ImGui */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFF1E24628AEE002B1023 /* ImGuiLayer.h */,
+				09DBFF1F24628AEE002B1023 /* ImGuiLayer.cpp */,
+				09DBFF2024628AEE002B1023 /* ImGuiBuild.cpp */,
+			);
+			path = ImGui;
+			sourceTree = "<group>";
+		};
+		09DBFF2124628AEE002B1023 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFF2224628AEE002B1023 /* Event.h */,
+				09DBFF2324628AEE002B1023 /* KeyEvent.h */,
+				09DBFF2424628AEE002B1023 /* ApplicationEvent.h */,
+				09DBFF2524628AEE002B1023 /* MouseEvent.h */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		09DBFF2624629750002B1023 /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				09DBFEE424628AEE002B1023 /* imgui */,
+				09DBFEE524628AEE002B1023 /* spdlog */,
+				09DBFEE624628AEE002B1023 /* Glad */,
+				09DBFEF424628AEE002B1023 /* stb_image */,
+				09DBFEF724628AEE002B1023 /* glfw */,
+				09DBFEF824628AEE002B1023 /* glm */,
+			);
+			path = vendor;
+			sourceTree = "<group>";
+		};
+		09DBFF2724629764002B1023 /* src */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
