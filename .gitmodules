@@ -1,0 +1,3 @@
+[submodule "CrudeRender/CrudeRender/vendor/spdlog"]
+	path = CrudeRender/CrudeRender/vendor/spdlog
+	url = https://github.com/gabime/spdlog
