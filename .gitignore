@@ -1,7 +1,3 @@
-#xcodeproj files
-.xcodeproj
-
-
 CrudeRender.xcodeproj
 CrudeRender/OpenGL-Core
-CrudeRender.xcodeproj/project.pbxproj
+CrudeRender/main.cpp
