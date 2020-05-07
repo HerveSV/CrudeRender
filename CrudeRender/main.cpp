@@ -27,6 +27,9 @@ int main(int argc, const char * argv[]) {
 
 #include <cstdio>
 #include "glm/gtc/matrix_transform.hpp"
+#include "src/Crude/Events/KeyEvent.h"
+#include "src/Crude/Events/MouseEvent.h"
+#include "src/Crude/Events/ApplicationEvent.h"
 void load_levels_example();
 void stdout_logger_example();
 void basic_example();
