@@ -18,10 +18,10 @@ namespace Crude
     enum class EventType
     {
         None = 0,
-        WindowClosed, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
+        WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
         AppTick, AppUpdate, AppRender,
-        KeyPressed, KeyReleased,
-        MouseButtonPresses, MouseButtonReleased, MouseMoved, MouseScrolled
+        KeyPressed, KeyReleased, KeyTyped,
+        MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
     };
     
     enum EventCategory
@@ -58,7 +58,7 @@ virtual const char* getName() const override { return #type; }
             return getCategoryFlag() & category;
         }
         
-        inline bool isHanded() const { return m_Handled; }
+        inline bool isHandled() const { return m_Handled; }
         
     protected:
         bool m_Handled = false;
@@ -77,11 +77,11 @@ virtual const char* getName() const override { return #type; }
         
         //FUNC will be deduced by the compiler
         template<typename T, typename FUNC>
-        bool dispatch(const FUNC& func)
+        bool dispatch(const FUNC& func, bool captureEvent = true) //if captureEvent is true, the event is handled and will not propagate to lower layers
         {
-            if (m_Event.getEventType() == T::GetStaticType())
+            if (m_Event.getEventType() == T::getStaticType())
             {
-                m_Event.m_Handled = func(static_cast<T&>(m_Event));
+                m_Event.m_Handled = func(static_cast<T&>(m_Event)) && captureEvent;
                 return true;
             }
             return false;

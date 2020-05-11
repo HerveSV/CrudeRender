@@ -18,7 +18,7 @@ project "Glad"
         "include"
     }
     
-    filter "system:windows"
+    filter "system:macos"
         systemversion "latest"
 
     filter "configurations:Debug"

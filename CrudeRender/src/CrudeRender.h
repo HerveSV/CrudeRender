@@ -9,5 +9,7 @@
 #ifndef CrudeCore_h
 #define CrudeCore_h
 
+#include <glad/glad.h>
+#include "Crude/Core/Application.hpp"
 
 #endif /* CrudeCore_h */

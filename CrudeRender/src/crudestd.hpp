@@ -9,6 +9,8 @@
 #ifndef crudestd_hpp
 #define crudestd_hpp
 
+
+
 #include <stdio.h>
 #include <iostream>
 #include <memory>
@@ -16,13 +18,15 @@
 #include <algorithm>
 #include <functional>
 
+#include <cassert>
+
 #include <string>
 #include <sstream>
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
 
-//#include "GLCore/Core/Log.h"
+#include "Crude/Core/Log.hpp"
 
 
 #endif /* crudestd_hpp */
