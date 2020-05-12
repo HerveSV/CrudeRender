@@ -33,6 +33,7 @@ public:
     virtual void onImGuiRender() override
     {
         ImGui::ShowDemoWindow();
+        ImGui::ShowUserGuide();
     }
     
     virtual void onEvent(Crude::Event& event) override

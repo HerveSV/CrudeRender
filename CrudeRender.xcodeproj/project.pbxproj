@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		097EEC482469939E002E564B /* libglfw.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 097EEC472469939E002E564B /* libglfw.3.dylib */; };
+		0926553D246A19330028EA75 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0926553C246A19330028EA75 /* libglfw.3.3.dylib */; };
 		097EEE5B246998B7002E564B /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09DB1B6A2462E91B002B1023 /* Log.cpp */; };
 		097EEE5D246998B7002E564B /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09DB1B6D2462EC25002B1023 /* Application.cpp */; };
 		097EEE5F246998B7002E564B /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09DB1B702462EC31002B1023 /* Layer.cpp */; };
@@ -31,7 +31,6 @@
 		097EEE7E246999DA002E564B /* imgui_impl_glfw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 097EEE062469985F002E564B /* imgui_impl_glfw.cpp */; };
 		097EEE7F24699A06002E564B /* MouseEvent.h in Sources */ = {isa = PBXBuildFile; fileRef = 09DB1B782462F623002B1023 /* MouseEvent.h */; };
 		097EEE8024699A06002E564B /* ApplicationEvent.h in Sources */ = {isa = PBXBuildFile; fileRef = 09DB1B792462F635002B1023 /* ApplicationEvent.h */; };
-		097EEE8124699CF6002E564B /* monitor.c in Sources */ = {isa = PBXBuildFile; fileRef = 09DBFFE12462A294002B1023 /* monitor.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +70,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0926553C246A19330028EA75 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libglfw.3.3.dylib; sourceTree = "<group>"; };
+		097E9EE824699D9500AA494B /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libglfw3.a; sourceTree = "<group>"; };
+		097E9EE924699D9500AA494B /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libglfw.3.dylib; sourceTree = "<group>"; };
+		097E9EEF24699E1000AA494B /* BuildGLFW.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = BuildGLFW.c; sourceTree = "<group>"; };
 		097EEC472469939E002E564B /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.dylib; path = "CrudeRender/vendor/glfw/lib-macos/libglfw.3.dylib"; sourceTree = "<group>"; };
 		097EED392469985E002E564B /* imgui_single_file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imgui_single_file.h; sourceTree = "<group>"; };
 		097EED3B2469985E002E564B /* imgui_freetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imgui_freetype.h; sourceTree = "<group>"; };
@@ -2152,13 +2155,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				097EEC482469939E002E564B /* libglfw.3.dylib in Frameworks */,
+				0926553D246A19330028EA75 /* libglfw.3.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		097E9EE724699D9500AA494B /* lib-macos */ = {
+			isa = PBXGroup;
+			children = (
+				0926553C246A19330028EA75 /* libglfw.3.3.dylib */,
+				097E9EE824699D9500AA494B /* libglfw3.a */,
+				097E9EE924699D9500AA494B /* libglfw.3.dylib */,
+			);
+			path = "lib-macos";
+			sourceTree = "<group>";
+		};
 		097EED362469985E002E564B /* imgui */ = {
 			isa = PBXGroup;
 			children = (
@@ -5016,6 +5029,7 @@
 		09DBFEF724628AEE002B1023 /* glfw */ = {
 			isa = PBXGroup;
 			children = (
+				097E9EE724699D9500AA494B /* lib-macos */,
 				09DB00332462A295002B1023 /* CMake */,
 				09DB00512462A297002B1023 /* CMakeLists.txt */,
 				09DB00532462A297002B1023 /* deps */,
@@ -5139,6 +5153,7 @@
 				09DBFEE624628AEE002B1023 /* Glad */,
 				09DBFEF424628AEE002B1023 /* stb_image */,
 				09DBFEF724628AEE002B1023 /* glfw */,
+				097E9EEF24699E1000AA494B /* BuildGLFW.c */,
 			);
 			path = vendor;
 			sourceTree = "<group>";
@@ -5340,7 +5355,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				097EEE8124699CF6002E564B /* monitor.c in Sources */,
 				097EEE7F24699A06002E564B /* MouseEvent.h in Sources */,
 				097EEE8024699A06002E564B /* ApplicationEvent.h in Sources */,
 				097EEE7E246999DA002E564B /* imgui_impl_glfw.cpp in Sources */,
