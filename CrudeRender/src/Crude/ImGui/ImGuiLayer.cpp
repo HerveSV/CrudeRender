@@ -12,7 +12,8 @@
 #include "../Core/Application.hpp"
 #include "../Core/KeyCodes.h"
 
-#define IMGUI_IMPL_OPENGL_LOADER_GLAD
+//#define IMGUI_DISABLE_DEBUG_WINDOWS
+//#define IMGUI_IMPL_OPENGL_LOADER_GLAD
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
@@ -66,10 +67,9 @@ namespace Crude
         ImGuiStyle& style = ImGui::GetStyle();
         if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
         {
-            style.WindowRounding = 5.0f;
+            style.WindowRounding = 0.0f;
             style.Colors[ImGuiCol_WindowBg].w = 1.0f;
         }
-        
         
         
         io.KeyMap[ImGuiKey_Tab] = CRD_KEY_TAB;
@@ -94,6 +94,7 @@ namespace Crude
         io.KeyMap[ImGuiKey_X] = CRD_KEY_X;
         io.KeyMap[ImGuiKey_Y] = CRD_KEY_Y;
         io.KeyMap[ImGuiKey_Z] = CRD_KEY_Z;
+        
         
         Application& app = Application::get();
         GLFWwindow* window = app.getWindow().getNativeWindow();

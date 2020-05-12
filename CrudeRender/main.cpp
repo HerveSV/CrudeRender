@@ -32,11 +32,16 @@ public:
     
     virtual void onImGuiRender() override
     {
-        static bool showWin1 = true;
-        static bool showWin2 = true;
-        if(showWin1)
-            ImGui::ShowDemoWindow(&showWin1);
         //ImGui::ShowUserGuide();
+        static int great;
+        ImGui::Begin("Hello there");
+        ImGui::InputInt("Great int", &great);
+        ImGui::End();
+        if(m_showDemo)
+        {
+            ImGui::ShowDemoWindow(&m_showDemo);
+        }
+        
     }
     
     virtual void onEvent(Crude::Event& event) override
@@ -51,6 +56,8 @@ private:
         LOG_TRACE("Key not captured");
         return true;
     }
+    
+    bool m_showDemo = true;
 };
 
 class LolLayer : public Crude::Layer
