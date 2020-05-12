@@ -9,7 +9,15 @@
 #ifndef CrudeCore_h
 #define CrudeCore_h
 
-#include <glad/glad.h>
+#include "glad/glad.h"
+#include "imgui.h"
+#include "glm/glm.hpp"
+#include "glm/gtc/type_ptr.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+
 #include "Crude/Core/Application.hpp"
+#include "Crude/Core/Input.hpp"
+#include "Crude/Core/KeyCodes.h"
+#include "Crude/Core/MouseButtonCodes.h"
 
 #endif /* CrudeCore_h */

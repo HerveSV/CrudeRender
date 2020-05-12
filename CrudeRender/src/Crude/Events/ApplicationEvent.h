@@ -23,7 +23,7 @@ namespace Crude
             
         }
         
-        std::string toString() const override
+        virtual std::string toString() const override
         {
             std::stringstream ss;
             ss << "WindowResizeEvent: "<< m_Width << "(width) " << m_Height << "(height)";

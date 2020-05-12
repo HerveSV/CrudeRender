@@ -31,6 +31,7 @@
 		097EEE7E246999DA002E564B /* imgui_impl_glfw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 097EEE062469985F002E564B /* imgui_impl_glfw.cpp */; };
 		097EEE7F24699A06002E564B /* MouseEvent.h in Sources */ = {isa = PBXBuildFile; fileRef = 09DB1B782462F623002B1023 /* MouseEvent.h */; };
 		097EEE8024699A06002E564B /* ApplicationEvent.h in Sources */ = {isa = PBXBuildFile; fileRef = 09DB1B792462F635002B1023 /* ApplicationEvent.h */; };
+		09869D47246AA2D400B46FFA /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09869D45246AA2D400B46FFA /* Input.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -251,6 +252,8 @@
 		097EEE152469985F002E564B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		097EEE162469985F002E564B /* imgui_demo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgui_demo.cpp; sourceTree = "<group>"; };
 		097EEE172469985F002E564B /* imgui_draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgui_draw.cpp; sourceTree = "<group>"; };
+		09869D45246AA2D400B46FFA /* Input.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Input.cpp; sourceTree = "<group>"; };
+		09869D46246AA2D400B46FFA /* Input.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Input.hpp; sourceTree = "<group>"; };
 		098E467E2467E54F0063419A /* khrplatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
 		098E46802467E54F0063419A /* glad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
 		098E46822467E5570063419A /* glad.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
@@ -3229,6 +3232,8 @@
 				09B7CE3F2463EBEB00B48C1C /* MouseButtonCodes.h */,
 				09B7CE442464545400B48C1C /* Window.cpp */,
 				09B7CE452464545400B48C1C /* Window.hpp */,
+				09869D45246AA2D400B46FFA /* Input.cpp */,
+				09869D46246AA2D400B46FFA /* Input.hpp */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -5373,6 +5378,7 @@
 				097EEE63246998B7002E564B /* Core.h in Sources */,
 				097EEE64246998B7002E564B /* KeyCodes.h in Sources */,
 				097EEE65246998B7002E564B /* MouseButtonCodes.h in Sources */,
+				09869D47246AA2D400B46FFA /* Input.cpp in Sources */,
 				097EEE66246998B7002E564B /* Window.cpp in Sources */,
 				097EEE67246998B7002E564B /* Window.hpp in Sources */,
 				097EEE68246998B7002E564B /* Event.h in Sources */,

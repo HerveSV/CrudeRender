@@ -71,6 +71,11 @@ namespace Crude
             style.Colors[ImGuiCol_WindowBg].w = 1.0f;
         }
         
+        Application& app = Application::get();
+        GLFWwindow* window = app.getWindow().getNativeWindow();
+        // Setup Platform/Renderer bindings
+        ImGui_ImplGlfw_InitForOpenGL(window, true);
+        ImGui_ImplOpenGL3_Init("#version 410");
         
         io.KeyMap[ImGuiKey_Tab] = CRD_KEY_TAB;
         io.KeyMap[ImGuiKey_LeftArrow] = CRD_KEY_LEFT;
@@ -96,12 +101,7 @@ namespace Crude
         io.KeyMap[ImGuiKey_Z] = CRD_KEY_Z;
         
         
-        Application& app = Application::get();
-        GLFWwindow* window = app.getWindow().getNativeWindow();
         
-        // Setup Platform/Renderer bindings
-        ImGui_ImplGlfw_InitForOpenGL(window, true);
-        ImGui_ImplOpenGL3_Init("#version 410");
 
         
     }

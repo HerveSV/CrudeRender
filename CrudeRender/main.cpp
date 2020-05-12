@@ -10,12 +10,8 @@
 #include "src/crudestd.hpp"
 #include "src/CrudeRender.h"
 
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
 
-
-
+using namespace Crude;
 
 class MainLayer : public Crude::Layer
 {
@@ -27,6 +23,11 @@ public:
     {
         glClearColor(1.0f, 0.4f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+        
+        if(Input::isKeyPressed(CRD_KEY_LEFT_CONTROL))
+        {
+            LOG_TRACE("0 is pressed!");
+        }
         //CORE_LOG_TRACE("Yeet, it's updating");
     }
     
