@@ -32,8 +32,11 @@ public:
     
     virtual void onImGuiRender() override
     {
-        ImGui::ShowDemoWindow();
-        ImGui::ShowUserGuide();
+        static bool showWin1 = true;
+        static bool showWin2 = true;
+        if(showWin1)
+            ImGui::ShowDemoWindow(&showWin1);
+        //ImGui::ShowUserGuide();
     }
     
     virtual void onEvent(Crude::Event& event) override
