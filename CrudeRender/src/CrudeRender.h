@@ -19,5 +19,6 @@
 #include "Crude/Core/Input.hpp"
 #include "Crude/Core/KeyCodes.h"
 #include "Crude/Core/MouseButtonCodes.h"
+#include "Crude/ImGui/ImGuiCustoms.hpp"
 
 #endif /* CrudeCore_h */

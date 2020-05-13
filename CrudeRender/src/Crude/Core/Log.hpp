@@ -29,7 +29,6 @@ namespace Crude
     
 }
 
-
 // Core log macros
 #define CORE_LOG_TRACE(...)         ::Crude::Log::getCoreLogger()->trace(__VA_ARGS__)
 #define CORE_LOG_INFO(...)          ::Crude::Log::getCoreLogger()->info(__VA_ARGS__)
@@ -43,5 +42,10 @@ namespace Crude
 #define LOG_WARN(...)          ::Crude::Log::getClientLogger()->warn(__VA_ARGS__)
 #define LOG_ERROR(...)         ::Crude::Log::getClientLogger()->error(__VA_ARGS__)
 #define LOG_CRITICAL(...)      ::Crude::Log::getClientLogger()->critical(__VA_ARGS__)
+
+
+
+
+
 
 #endif /* Log_hpp */

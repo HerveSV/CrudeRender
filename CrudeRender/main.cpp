@@ -6,9 +6,9 @@
 //  Copyright © 2020 Hervé Schmit-Veiler. All rights reserved.
 //
 
-
 #include "src/crudestd.hpp"
 #include "src/CrudeRender.h"
+
 
 
 using namespace Crude;
@@ -34,25 +34,24 @@ public:
     virtual void onImGuiRender() override
     {
         //ImGui::ShowUserGuide();
-        static int great;
-        ImGui::Begin("Hello there");
-        ImGui::InputInt("Great int", &great);
+        //ImGui::ShowDemoWindow();
+        ImGui::ShowCrudeDockSpace();
+        ImGui::ShowDemoWindow();
+        /*ImGui::Begin("Test1");
         ImGui::End();
-        if(m_showDemo)
-        {
-            ImGui::ShowDemoWindow(&m_showDemo);
-        }
+        ImGui::Begin("Test2");
+        ImGui::End();*/
         
     }
     
     virtual void onEvent(Crude::Event& event) override
     {
         Crude::EventDispatcher dispatcher(event);
-        dispatcher.dispatch<Crude::KeyTypedEvent>(BIND_EVENT_FN(MainLayer::windowClose));
+        dispatcher.dispatch<Crude::KeyTypedEvent>(BIND_EVENT_FN(MainLayer::onKeyTypedEvent));
     }
     
 private:
-    bool windowClose(Crude::KeyTypedEvent& event)
+    bool onKeyTypedEvent(Crude::KeyTypedEvent& event)
     {
         LOG_TRACE("Key not captured");
         return true;
@@ -78,6 +77,12 @@ public:
         dispatcher.dispatch<Crude::WindowCloseEvent>(BIND_EVENT_FN(LolLayer::windowClose));
     }
     
+    virtual void onImGuiRender() override
+    {
+        ImGui::Begin("Test3");
+        ImGui::End();
+    }
+    
 private:
     bool windowClose(Crude::WindowCloseEvent& event)
     {
@@ -91,7 +96,7 @@ int main(int argc, const char * argv[]) {
     Crude::Application app;
     
     app.pushLayer(new MainLayer);
-    app.pushLayer(new LolLayer);
+    //app.pushLayer(new LolLayer);
     
     
     /*std::shared_ptr<spdlog::logger> logger = spdlog::stdout_color_mt("CRUDE");
