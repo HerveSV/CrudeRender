@@ -9,7 +9,7 @@
 #ifndef CrudeCore_h
 #define CrudeCore_h
 
-#include "glad/glad.h"
+#include "Crude/GLlibs.h"
 #include "imgui.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/type_ptr.hpp"
