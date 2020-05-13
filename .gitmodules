@@ -1,12 +1,12 @@
 [submodule "CrudeRender/vendor/spdlog"]
 	path = CrudeRender/vendor/spdlog
-	url = https://github.com/gabime/spdlog
+	url = https://github.com/HerveSV/spdlog
 [submodule "CrudeRender/vendor/glfw"]
 	path = CrudeRender/vendor/glfw
-	url = https://github.com/glfw/glfw
+	url = https://github.com/HerveSV/glfw
 [submodule "CrudeRender/vendor/glm"]
 	path = CrudeRender/vendor/glm
-	url = https://github.com/g-truc/glm
+	url = https://github.com/HerveSV/glm
 [submodule "CrudeRender/vendor/imgui"]
 	path = CrudeRender/vendor/imgui
-	url = https://github.com/ocornut/imgui
+	url = https://github.com/HerveSV/imgui
