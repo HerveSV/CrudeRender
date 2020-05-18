@@ -6,6 +6,7 @@
 //  Copyright © 2020 Hervé Schmit-Veiler. All rights reserved.
 //
 
+
 #include "MainLayer.hpp"
 
 
@@ -17,6 +18,7 @@ public:
     MainApplication()
     : Application()
     {
+        //Log::enableLogging();
         pushLayer(new MainLayer);
     }
 };

@@ -8,6 +8,7 @@
 
 #ifndef Application_hpp
 #define Application_hpp
+#include "../../crudestd.hpp"
 
 #include "Core.h"
 #include "../Events/Event.h"

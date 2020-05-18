@@ -9,6 +9,7 @@
 #ifndef Layer_hpp
 #define Layer_hpp
 
+#include "../../crudestd.hpp"
 #include "Core.h"
 #include "../Events/Event.h"
 #include <string>

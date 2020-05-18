@@ -9,5 +9,17 @@
 #ifndef CrudeUtil_h
 #define CrudeUtil_h
 
+#include "Crude/Util/Shader.hpp"
+#include "Crude/Util/IndexBuffer.hpp"
+#include "Crude/Util/VertexBuffer.hpp"
+#include "Crude/Util/VertexArray.hpp"
+#include "Crude/Util/VertexBufferLayout.hpp"
+
+#include "Crude/Util/OrthoCamera.hpp"
+
+
+#include "glm/glm.hpp"
+#include "glm/gtc/type_ptr.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 
 #endif /* CrudeUtil_h */

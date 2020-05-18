@@ -9,11 +9,10 @@
 #ifndef CrudeCore_h
 #define CrudeCore_h
 
+#include "crudestd.hpp"
+
 #include "Crude/GLlibs.h"
 #include "imgui.h"
-#include "glm/glm.hpp"
-#include "glm/gtc/type_ptr.hpp"
-#include "glm/gtc/matrix_transform.hpp"
 
 #include "Crude/Core/Application.hpp"
 #include "Crude/Core/Input.hpp"
