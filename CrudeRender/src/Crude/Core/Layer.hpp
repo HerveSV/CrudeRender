@@ -12,7 +12,7 @@
 #include "../../crudestd.hpp"
 #include "Core.h"
 #include "../Events/Event.h"
-#include <string>
+#include "Timestep.h"
 
 namespace Crude
 {
@@ -25,7 +25,7 @@ namespace Crude
     
         virtual void onAttach() {};
         virtual void onDetach() {};
-        virtual void onUpdate() {};
+        virtual void onUpdate(Timestep deltaTime) {};
         virtual void onImGuiRender() {};
         virtual void onEvent(Event& event) {};
         

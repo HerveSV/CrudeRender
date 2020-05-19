@@ -16,7 +16,7 @@ namespace Crude
 {
 
     Application::Application()
-    :m_Running(true)
+    : m_Running(true), m_LastFrameTime(0.0f)
     {
         if(s_Instance == nullptr)
         {
@@ -60,9 +60,13 @@ namespace Crude
     {
         while(m_Running)
         {
+            float currFrameTime = glfwGetTime();
+            Timestep deltaTime = currFrameTime - m_LastFrameTime;
+            m_LastFrameTime = currFrameTime;
+            
             for(Layer* layer : m_LayerStack)
             {
-                layer->onUpdate();
+                layer->onUpdate(deltaTime);
             }
             
             m_ImGuiLayer->beginFrame();

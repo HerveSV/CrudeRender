@@ -10,7 +10,7 @@
 
 #include "../GLlibs.h"
 
-namespace Crude
+namespace Crude::Utils
 {
 
     VertexBuffer::VertexBuffer(const void* data, unsigned int size) //size is bytecount of data

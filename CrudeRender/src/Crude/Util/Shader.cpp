@@ -10,7 +10,7 @@
 
 #include "../GLlibs.h"
 
-namespace Crude
+namespace Crude::Utils
 {
 
     Shader::Shader(const char* vertexPath, const char* fragmentPath)

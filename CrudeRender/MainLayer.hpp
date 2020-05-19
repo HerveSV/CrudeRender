@@ -13,6 +13,8 @@
 #include "src/CrudeUtil.h"
 
 
+
+
 class MainLayer : public Crude::Layer
 {
     
@@ -21,7 +23,7 @@ public:
     
     virtual void onAttach() override;
     
-    virtual void onUpdate() override;
+    virtual void onUpdate(Crude::Timestep deltaTime) override;
     
     virtual void onImGuiRender() override;
     
@@ -29,17 +31,19 @@ public:
     
 private:
     bool onKeyTypedEvent(Crude::KeyTypedEvent& event);
+    bool onWindowResizeEvent(Crude::WindowResizeEvent& event);
     
     
 private:
     
     
-    Crude::OrthoCamera cam;
+    Crude::Utils::OrthoCamera* m_OrthoCam;
+    Crude::Utils::PerspecCamera* m_PerspecCam;
     //Crude::VertexBuffer* m_vbo;
     
     glm::vec3 m_Pos = glm::vec3(0.0f);
-    Crude::VertexArray m_vao;
-    std::unique_ptr<Crude::Shader> m_Shader;
+    Crude::Utils::VertexArray m_vao;
+    std::unique_ptr<Crude::Utils::Shader> m_Shader;
     
     bool m_showDemo = true;
 };

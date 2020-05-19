@@ -11,7 +11,7 @@
 #include "../GLlibs.h"
 
 
-namespace Crude
+namespace Crude::Utils
 {
 
     unsigned int VertexBufferElement::getSizeOfType(unsigned int type)

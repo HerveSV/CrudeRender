@@ -12,18 +12,17 @@
 #include "../../crudestd.hpp"
 #include "Camera.hpp"
 
-namespace Crude
+namespace Crude::Utils
 {
     
     class OrthoCamera : public Camera
     {
     public:
         
-        OrthoCamera(); //default constructor
-        OrthoCamera(float left, float right, float bottom, float top, float near = 0.0f, float far = 0.0f);
+        OrthoCamera(float left, float right, float bottom, float top, float near = -1.0f, float far = 1.0f);
         ~OrthoCamera();
         
-        void setProjection(float left, float right, float bottom, float top, float near = 0.0f, float far = 0.0f);
+        void setProjection(float left, float right, float bottom, float top, float near = -1.0f, float far = 1.0f);
         
         class OrthoFrustrumData
         {
@@ -44,7 +43,7 @@ namespace Crude
         
     protected: //just in case we want to further inherit from this class again
         
-        virtual void recalculateProjectionMatrix() override;
+        virtual void updateProjectionMatrix() override;
         
         
     };

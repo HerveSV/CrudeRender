@@ -8,18 +8,13 @@
 
 #include "OrthoCamera.hpp"
 
-namespace Crude
+namespace Crude::Utils
 {
-    OrthoCamera::OrthoCamera()
-    : m_FrustrumData(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f)
-    {
-        
-    }
     
     OrthoCamera::OrthoCamera(float left, float right, float bottom, float top, float near, float far)
-    : m_FrustrumData(left, right, bottom, top, near, far)
+    : Camera(), m_FrustrumData(left, right, bottom, top, near, far)
     {
-        recalculateProjectionMatrix();
+        updateProjectionMatrix();
     }
     
     OrthoCamera::~OrthoCamera()
@@ -30,14 +25,22 @@ namespace Crude
     void OrthoCamera::setProjection(float left, float right, float bottom, float top, float near, float far)
     {
         m_FrustrumData = OrthoFrustrumData(left, right, bottom, top, near, far);
-        recalculateProjectionMatrix();
+        updateProjectionMatrix();
+        
     }
     
-    void OrthoCamera::recalculateProjectionMatrix()
+    /*void OrthoCamera::setProjection(float aspectRatio)
     {
+        m_FrustrumData = OrthoFrustrumData(-aspectRatio, aspectRatio, -1.f, 1.f, 0.f, 0.f);
+        recalculateProjectionMatrix();
+    }*/
+    
+    void OrthoCamera::updateProjectionMatrix()
+    {
+
         m_ProjectionMatrix = glm::ortho(m_FrustrumData.Left, m_FrustrumData.Right, m_FrustrumData.Bottom, m_FrustrumData.Top, m_FrustrumData.Near, m_FrustrumData.Far);
-        
-        recalculateViewProjectionMatrix();
+  
+        updateViewProjectionMatrix();
     }
     
     

@@ -16,6 +16,7 @@
 #include "LayerStack.hpp"
 #include "../ImGui/ImGuiLayer.hpp"
 #include "Window.hpp"
+#include "Timestep.h"
 
 namespace Crude
 {
@@ -37,12 +38,16 @@ namespace Crude
     private:
         bool onWindowCloseEvent(WindowCloseEvent& event);
         
+    private:
         LayerStack m_LayerStack;
         
         ImGuiLayer* m_ImGuiLayer;
         
         bool m_Running;
+        
         std::unique_ptr<Window> m_Window;
+        
+        float m_LastFrameTime = 0.0f;
         
         inline static Application* s_Instance = nullptr;
     };

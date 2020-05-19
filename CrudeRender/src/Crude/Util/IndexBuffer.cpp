@@ -10,7 +10,7 @@
 
 #include "../GLlibs.h"
 
-namespace Crude
+namespace Crude::Utils
 {
     
     IndexBuffer::IndexBuffer(const unsigned int* data, unsigned int count) //count is element count of data

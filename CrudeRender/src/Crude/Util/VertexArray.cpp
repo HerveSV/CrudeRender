@@ -10,7 +10,7 @@
 
 #include "../GLlibs.h"
 
-namespace Crude
+namespace Crude::Utils
 {
 
     VertexArray::VertexArray()

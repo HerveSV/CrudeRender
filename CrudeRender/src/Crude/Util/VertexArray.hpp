@@ -15,7 +15,7 @@
 #include "IndexBuffer.hpp"
 #include "VertexBufferLayout.hpp"
 
-namespace Crude
+namespace Crude::Utils
 {
     class VertexArray
     {

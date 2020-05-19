@@ -11,7 +11,7 @@
 
 #include "../../crudestd.hpp"
 
-namespace Crude
+namespace Crude::Utils
 {
     
     class IndexBuffer
