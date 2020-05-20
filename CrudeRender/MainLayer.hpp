@@ -39,7 +39,7 @@ private:
     
     Crude::Utils::OrthoCamera* m_OrthoCam;
     Crude::Utils::PerspecCamera* m_PerspecCam;
-    //Crude::VertexBuffer* m_vbo;
+    Crude::Utils::VertexBuffer* m_vbo;
     
     glm::vec3 m_Pos = glm::vec3(0.0f);
     Crude::Utils::VertexArray m_vao;
