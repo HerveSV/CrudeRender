@@ -26,40 +26,44 @@ namespace Crude::Utils
         return 0;
     }
 
-    void VertexBufferLayout::pushf(unsigned int count)
+    void VertexBufferLayout::pushFloat(unsigned int count)
     {
         m_elements.push_back(VertexBufferElement(GL_FLOAT, count, GL_FALSE));
         m_stride += VertexBufferElement::getSizeOfType(GL_FLOAT) * count;
     }
 
-    void VertexBufferLayout::pushui(unsigned int count)
+    void VertexBufferLayout::pushUInt(unsigned int count)
     {
         m_elements.push_back(VertexBufferElement(GL_UNSIGNED_INT, count, GL_FALSE));
         m_stride += VertexBufferElement::getSizeOfType(GL_UNSIGNED_INT) * count;
     }
 
-    void VertexBufferLayout::pushuc(unsigned int count)
+    void VertexBufferLayout::pushUChar(unsigned int count)
     {
         m_elements.push_back(VertexBufferElement(GL_UNSIGNED_BYTE, count, GL_FALSE));
         m_stride += VertexBufferElement::getSizeOfType(GL_UNSIGNED_BYTE) * count;
     }
 
-    template<> void VertexBufferLayout::push<float>(unsigned int count)
+    /*template<>
+    void VertexBufferLayout::push<float>(unsigned int count)
     {
         m_elements.push_back(VertexBufferElement(GL_FLOAT, count, GL_FALSE));
         m_stride += VertexBufferElement::getSizeOfType(GL_FLOAT) * count;
     }
-
-    template<> void VertexBufferLayout::push<unsigned int>(unsigned int count)
+    
+    template<>
+    void VertexBufferLayout::push<unsigned int>(unsigned int count)
     {
         m_elements.push_back(VertexBufferElement(GL_UNSIGNED_INT, count, GL_FALSE));
         m_stride += VertexBufferElement::getSizeOfType(GL_UNSIGNED_INT) * count;
     }
-
-    template<> void VertexBufferLayout::push<unsigned char>(unsigned int count)
+    
+    template<>
+    void VertexBufferLayout::push<unsigned char>(unsigned int count)
     {
         m_elements.push_back(VertexBufferElement(GL_UNSIGNED_BYTE, count, GL_FALSE));
         m_stride += VertexBufferElement::getSizeOfType(GL_UNSIGNED_BYTE) * count;
-    }
+    }*/
+    
     
 }

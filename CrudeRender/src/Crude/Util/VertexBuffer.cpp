@@ -22,6 +22,7 @@ namespace Crude::Utils
 
     VertexBuffer::~VertexBuffer()
     {
+        LOG_TRACE("Vertex Buffer ID<{0)> deleted");
         glDeleteBuffers(1, &m_ID);
     }
 

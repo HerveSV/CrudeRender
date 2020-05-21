@@ -43,40 +43,30 @@ namespace Crude::Utils
         template <typename T>
         void push(unsigned int count)
         {
-            //static_assert(false, "Unspecified!");
+            LOG_ERROR("Unspecified type for VertexBufferLayout::push(unsigned int)");
         }
-        
-        /*template<>
-        void Push<float>(unsigned int count)
-        {
-            m_elements.push_back(VertexBufferElement(GL_FLOAT, count, GL_FALSE));
-            m_stride += VertexBufferElement::getSizeOfType(GL_FLOAT) * count;
-        }
+        /*
+        template<>
+        void push<float>(unsigned int count);
         
         template<>
-        void Push<unsigned int>(unsigned int count)
-        {
-            m_elements.push_back(VertexBufferElement(GL_UNSIGNED_INT, count, GL_FALSE));
-            m_stride += VertexBufferElement::getSizeOfType(GL_UNSIGNED_INT) * count;
-        }
+        void push<unsigned int>(unsigned int count);
         
         template<>
-        void Push<unsigned char>(unsigned int count)
-        {
-            m_elements.push_back(VertexBufferElement(GL_UNSIGNED_BYTE, count, GL_TRUE));
-            m_stride += VertexBufferElement::getSizeOfType(GL_UNSIGNED_BYTE) * count;
-        }
-        /**/
+        void push<unsigned char>(unsigned int count);
+        */
         
-        void pushf(unsigned int count); //overloaded version of float pushing
+        void pushFloat(unsigned int count); //overloaded version of float pushing
         
-        void pushui(unsigned int count); //overloaded version of unsigned int pushing
+        void pushUInt(unsigned int count); //overloaded version of unsigned int pushing
         
-        void pushuc(unsigned int count); //overloaded version of unsigned char/byte pushing
+        void pushUChar(unsigned int count); //overloaded version of unsigned char/byte pushing
         
         inline const std::vector<VertexBufferElement> getElements() const {return m_elements;}
         inline unsigned int getStride() const {return m_stride;}
     };
+    
+    
 
 }
 #endif /* VertexBufferLayout_hpp */

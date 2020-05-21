@@ -20,6 +20,7 @@ namespace Crude::Utils
 
     VertexArray::~VertexArray()
     {
+        LOG_TRACE("Vertex Array ID<{0)> deleted");
         glDeleteVertexArrays(1, &m_ID);
     }
 
@@ -47,12 +48,16 @@ namespace Crude::Utils
             offset += element.count * VertexBufferElement::getSizeOfType(element.type);
         }
         
+        m_VBO = &vbo;
+        
     }
 
-    void VertexArray::addIndexBuffer(IndexBuffer &ebo)
+    void VertexArray::addIndexBuffer(IndexBuffer &ibo)
     {
         bind();
-        ebo.bind();
+        ibo.bind();
+        
+        m_IBO = &ibo;
     }
 
 }

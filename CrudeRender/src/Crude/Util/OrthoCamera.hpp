@@ -22,6 +22,7 @@ namespace Crude::Utils
         OrthoCamera(float left, float right, float bottom, float top, float near = -1.0f, float far = 1.0f);
         ~OrthoCamera();
         
+        
         void setProjection(float left, float right, float bottom, float top, float near = -1.0f, float far = 1.0f);
         
         class OrthoFrustrumData

@@ -21,6 +21,8 @@ namespace Crude::Utils
     {
     private:
         
+        VertexBuffer* m_VBO;
+        IndexBuffer* m_IBO;
         unsigned int m_ID;
         
     public:
@@ -34,10 +36,12 @@ namespace Crude::Utils
         void unbind() const;
         
         void addVertexBuffer(VertexBuffer &vbo, VertexBufferLayout &layout);
+        void addIndexBuffer(IndexBuffer &ibo);
         
-        void addIndexBuffer(IndexBuffer &ebo);
+        inline VertexBuffer& getVertexBuffer() const { return *m_VBO; }
+        inline IndexBuffer& getIndexBuffer() const { return *m_IBO; }
         
-        inline unsigned int getID() const {return m_ID;}
+        inline unsigned int getID() const { return m_ID; }
         
     };
 }

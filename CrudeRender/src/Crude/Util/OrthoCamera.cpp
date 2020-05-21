@@ -15,12 +15,14 @@ namespace Crude::Utils
     : Camera(), m_FrustrumData(left, right, bottom, top, near, far)
     {
         updateProjectionMatrix();
+        updateViewMatrix();
     }
     
     OrthoCamera::~OrthoCamera()
     {
         
     }
+    
     
     void OrthoCamera::setProjection(float left, float right, float bottom, float top, float near, float far)
     {

@@ -12,7 +12,7 @@ using namespace Crude;
 using namespace Crude::Utils;
 
 MainLayer::MainLayer()
-: Layer("Main0")
+: Layer("Main0"), m_OCamController(16.f/9.f, 1.0f)
 {
     
 }
@@ -106,8 +106,8 @@ void MainLayer::onAttach()
     //m_shader = Crude::Shader(vert, frag);
     //m_shader.bind();
     
-    //m_Shader = std::make_unique<Shader>("assets/shadersources/mainShader.vs", "assets/shadersources/mainShader.fs");
-    m_Shader = std::make_unique<Shader>("/Users/Herve/Documents/CrudeRender/CrudeRender/assets/shadersources/mainShader.vs", "/Users/Herve/Documents/CrudeRender/CrudeRender/assets/shadersources/mainShader.fs");
+    m_Shader = std::make_unique<Shader>("CrudeAssets/shadersources/mainShader.vs", "CrudeAssets/shadersources/mainShader.fs");
+    //m_Shader = std::make_unique<Shader>("/Users/Herve/Documents/CrudeRender/CrudeRender/assets/shadersources/mainShader.vs", "/Users/Herve/Documents/CrudeRender/CrudeRender/assets/shadersources/mainShader.fs");
     m_Shader->bind();
     
     
@@ -144,16 +144,16 @@ void MainLayer::onAttach()
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);/**/
     //glBindVertexArray(vao);
  
-    
-    m_vbo = new VertexBuffer(&vertices, sizeof(vertices));
+
+    static VertexBuffer vbo(vertices, sizeof(vertices));
     VertexBufferLayout layout;
-    layout.push<float>(3);
+    layout.pushFloat(3);
     
-    static IndexBuffer ebo(indices, 6);
+    static IndexBuffer ibo(indices, 6);
     
     //Crude::VertexArray vao;
-    m_vao.addVertexBuffer(*m_vbo, layout);
-    m_vao.addIndexBuffer(ebo);
+    m_vao.addVertexBuffer(vbo, layout);
+    m_vao.addIndexBuffer(ibo);
     
     //m_vao.unbind();*/
     
@@ -163,9 +163,13 @@ void MainLayer::onAttach()
     
     
     m_OrthoCam = new OrthoCamera(-aspectRatio, aspectRatio, -1.f, 1.f);
-    //m_OrthoCam->setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+    m_OrthoCam->setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
     
+    glm::vec4 test = {0.f, 0.f, 0.f, 0.f};
+    test = m_OCamController.getCamera().getViewProjectionMatrix() * test;
+    LOG_TRACE("Test Coord: {0}, {1}, {2}", test.x, test.y, test.z);
     
+    //m_OCamController.getCamera().setProjection(-aspectRatio, aspectRatio, -1.f, 1.f);
     //m_PerspecCam.setPosition(glm::vec3(0.0f, 0.0f, -3.0f));
     m_PerspecCam = new PerspecCamera(glm::radians(45.f), aspectRatio, 0.1f, 100.f);
     m_PerspecCam->setPosition(glm::vec3(0.0f, 0.0f, -3.0f));
@@ -174,27 +178,36 @@ void MainLayer::onAttach()
     //m_TestCam->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
     //cam.setProjection(-720.f/2, 720.f/2, 1280.f/2, -1280.f/2, -1.f, 1.f);
     
-    
+    //LOG_INFO("Stuff: {0}", m_vao.getIndexBuffer().getCount());
     //m_Shader = Crude::Shader("assets/shadersources/mainShader.vs", "assets/shadersources/mainShader.fs");
     //m_Shader->bind();
 }
 
 void MainLayer::onUpdate(Timestep deltaTime)
 {
+    m_OCamController.onUpdate(deltaTime);
+    
     glClearColor(1.0f, 0.4f, 0.2f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     
     glm::mat4 model(1.0f);
     model = glm::translate(model, m_Pos);
-
-    glm::mat4 viewProjection = m_OrthoCam->getViewProjectionMatrix();
-   
+    
+    //glm::mat4 viewProjection = m_OrthoCam->getViewProjectionMatrix();
+    //glm::mat4 viewProjection = m_PerspecCam->getViewProjectionMatrix();
+    glm::mat4 viewProjection = m_OCamController.getCamera().getViewProjectionMatrix();
+    
+    //glm::vec4 testCoord(1.0f);
+    //testCoord = viewProjection * model * testCoord;
+    //LOG_TRACE("Test Coord: {0}, {1}, {2}", testCoord.x, testCoord.y, testCoord.z);
+    //std::cout<< testCoord.x << ", " << testCoord.y << ", " << testCoord.z <<std::endl;
+    
     m_Shader->bind();
     m_Shader->setMat4("u_MVP",  viewProjection * model);
     m_Shader->setVec4f("u_Colour", 0.5f, 0.5f, 1.0f, 1.0f);
 
-    //m_vao.bind();
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+    m_vao.bind();
+    glDrawElements(GL_TRIANGLES, m_vao.getIndexBuffer().getCount(), GL_UNSIGNED_INT, nullptr);
     
 
 }
@@ -215,6 +228,8 @@ void MainLayer::onImGuiRender()
 
 void MainLayer::onEvent(Crude::Event& event)
 {
+    m_OCamController.onEvent(event);
+    
     Crude::EventDispatcher dispatcher(event);
     dispatcher.dispatch<WindowResizeEvent>(BIND_EVENT_FN(MainLayer::onWindowResizeEvent));
     dispatcher.dispatch<Crude::KeyTypedEvent>(BIND_EVENT_FN(MainLayer::onKeyTypedEvent));
@@ -222,13 +237,13 @@ void MainLayer::onEvent(Crude::Event& event)
 
 bool MainLayer::onWindowResizeEvent(WindowResizeEvent& event)
 {
-    LOG_TRACE(event);
+    //LOG_TRACE(event);
     int width = event.getWidth();
     int height = event.getHeight();
     float aspectRatio = (float)width/(float)height;
-    LOG_TRACE(aspectRatio);
+    //LOG_TRACE(aspectRatio);
     //m_PerspecCam->setAspectRatio(aspectRatio);
-    m_OrthoCam->setProjection(-aspectRatio, aspectRatio, -1.f, 1.f);
+    //m_OrthoCam->setProjection(-aspectRatio, aspectRatio, -1.f, 1.f);
     return true;
 }
 

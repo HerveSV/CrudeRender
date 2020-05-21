@@ -23,10 +23,10 @@ namespace Crude::Utils
         updateViewMatrix();
     }
     
+    
     void Camera::setWorldUp(const glm::vec3 &worldUp)
     {
         m_WorldUp = worldUp;
-        updateCameraVectors();
         updateViewMatrix();
     }
     
@@ -42,7 +42,8 @@ namespace Crude::Utils
     {
         //glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_Position);
         //m_ViewMatrix = glm::inverse(transform);
-        
+        m_ViewMatrix = glm::mat4(1.0f);
+        updateCameraVectors();
         m_ViewMatrix = glm::lookAt(m_Position, m_Position + m_Front, m_Up);
         //glm::lookAt(m_Position, glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         updateViewProjectionMatrix();

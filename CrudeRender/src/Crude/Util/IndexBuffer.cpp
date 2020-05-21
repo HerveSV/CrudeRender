@@ -18,11 +18,12 @@ namespace Crude::Utils
         glGenBuffers(1, &m_ID);
         bind();
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(unsigned int), data, GL_STATIC_DRAW);
-        
+        m_count = count;
     }
 
     IndexBuffer::~IndexBuffer()
     {
+        LOG_TRACE("Index Buffer ID<{0)> deleted");
         glDeleteBuffers(1, &m_ID);
     }
 

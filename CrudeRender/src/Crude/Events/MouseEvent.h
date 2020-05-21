@@ -56,8 +56,8 @@ namespace Crude
             return ss.str();
         }
         
-        inline float getX() const { return m_OffsetX; }
-        inline float getY() const { return m_OffsetY; }
+        inline float getXOffset() const { return m_OffsetX; }
+        inline float getYOffset() const { return m_OffsetY; }
         
         DEFINE_CATEGORY_TYPE_METHODS(EventCategoryInput | EventCategoryMouse)
         DEFINE_EVENT_TYPE_METHODS(MouseScrolled)
