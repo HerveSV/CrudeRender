@@ -24,6 +24,11 @@ namespace Crude::Utils
         
         
         void setProjection(float left, float right, float bottom, float top, float near = -1.0f, float far = 1.0f);
+        void setNearFarPlanes(float near, float far);
+        
+        inline std::pair<float, float>  getNearFarPlanes() const { return {m_FrustrumData.Near, m_FrustrumData.Far}; }
+        inline float getNearPlane() const { return m_FrustrumData.Near; }
+        inline float getFarPlane() const { return m_FrustrumData.Far; }
         
         class OrthoFrustrumData
         {

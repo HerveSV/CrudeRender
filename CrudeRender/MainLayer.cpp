@@ -12,7 +12,7 @@ using namespace Crude;
 using namespace Crude::Utils;
 
 MainLayer::MainLayer()
-: Layer("Main0"), m_OCamController(16.f/9.f, 1.0f)
+: Layer("Main0"), m_OCamController(16.f/9.f), m_PCamController(16.f/9.f, glm::radians(45.f))
 {
     
 }
@@ -166,13 +166,18 @@ void MainLayer::onAttach()
     m_OrthoCam->setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
     
     glm::vec4 test = {0.f, 0.f, 0.f, 0.f};
-    test = m_OCamController.getCamera().getViewProjectionMatrix() * test;
+    test = m_PCamController.getCamera().getViewProjectionMatrix() * test;
     LOG_TRACE("Test Coord: {0}, {1}, {2}", test.x, test.y, test.z);
     
     //m_OCamController.getCamera().setProjection(-aspectRatio, aspectRatio, -1.f, 1.f);
     //m_PerspecCam.setPosition(glm::vec3(0.0f, 0.0f, -3.0f));
     m_PerspecCam = new PerspecCamera(glm::radians(45.f), aspectRatio, 0.1f, 100.f);
     m_PerspecCam->setPosition(glm::vec3(0.0f, 0.0f, -3.0f));
+    
+    m_PCamController.getCamera().setPosition(glm::vec3(0.0f, 0.0f, -3.0f));
+    m_PCamController.setBaseFOV(glm::radians(45.f));
+    m_PCamController.setFOVBounds(glm::radians(10.f), glm::radians(140.f));
+    //m_PCamController.setZoom(1.0f);
     
     //m_TestCam = new OrthographicCamera(-aspectRatio, aspectRatio, -1.f, 1.f);
     //m_TestCam->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
@@ -186,6 +191,7 @@ void MainLayer::onAttach()
 void MainLayer::onUpdate(Timestep deltaTime)
 {
     m_OCamController.onUpdate(deltaTime);
+    m_PCamController.onUpdate(deltaTime);
     
     glClearColor(1.0f, 0.4f, 0.2f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -197,9 +203,9 @@ void MainLayer::onUpdate(Timestep deltaTime)
     //glm::mat4 viewProjection = m_PerspecCam->getViewProjectionMatrix();
     glm::mat4 viewProjection = m_OCamController.getCamera().getViewProjectionMatrix();
     
-    //glm::vec4 testCoord(1.0f);
-    //testCoord = viewProjection * model * testCoord;
-    //LOG_TRACE("Test Coord: {0}, {1}, {2}", testCoord.x, testCoord.y, testCoord.z);
+    glm::vec4 testCoord(1.0f);
+    testCoord = viewProjection * model * testCoord;
+   // LOG_TRACE("Test Coord: {0}, {1}, {2}", testCoord.x, testCoord.y, testCoord.z);
     //std::cout<< testCoord.x << ", " << testCoord.y << ", " << testCoord.z <<std::endl;
     
     m_Shader->bind();
@@ -229,6 +235,7 @@ void MainLayer::onImGuiRender()
 void MainLayer::onEvent(Crude::Event& event)
 {
     m_OCamController.onEvent(event);
+    m_PCamController.onEvent(event);
     
     Crude::EventDispatcher dispatcher(event);
     dispatcher.dispatch<WindowResizeEvent>(BIND_EVENT_FN(MainLayer::onWindowResizeEvent));

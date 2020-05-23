@@ -21,6 +21,7 @@ namespace Crude::Utils
     class Camera
     {
     public:
+        
         //virtual void setProjection() = 0;
         void setPosition(const glm::vec3& position);
         const inline glm::vec3& getPosition() {return m_Position; };

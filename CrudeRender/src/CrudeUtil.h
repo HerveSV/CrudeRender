@@ -18,6 +18,7 @@
 #include "Crude/Util/OrthoCamera.hpp"
 #include "Crude/Util/PerspecCamera.hpp"
 #include "Crude/Util/OrthoCameraController.hpp"
+#include "Crude/Util/PerspecCameraController.hpp"
 
 
 #include "glm/glm.hpp"

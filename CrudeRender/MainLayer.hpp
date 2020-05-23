@@ -37,6 +37,7 @@ private:
 private:
     
     Crude::Utils::OrthoCameraController m_OCamController;
+    Crude::Utils::PerspecCameraController m_PCamController;
     Crude::Utils::OrthoCamera* m_OrthoCam;
     Crude::Utils::PerspecCamera* m_PerspecCam;
     //Crude::Utils::VertexBuffer* m_vbo;

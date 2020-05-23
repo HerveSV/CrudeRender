@@ -31,6 +31,13 @@ namespace Crude::Utils
         
     }
     
+    void OrthoCamera::setNearFarPlanes(float near, float far)
+    {
+        m_FrustrumData.Near = near;
+        m_FrustrumData.Far = far;
+        updateProjectionMatrix();
+    }
+    
     /*void OrthoCamera::setProjection(float aspectRatio)
     {
         m_FrustrumData = OrthoFrustrumData(-aspectRatio, aspectRatio, -1.f, 1.f, 0.f, 0.f);

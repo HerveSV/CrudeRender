@@ -17,7 +17,7 @@ namespace Crude::Utils
     {
     public:
         PerspecCamera();
-        PerspecCamera(float fov, float aspectRatio, float near, float far);
+        PerspecCamera(float fov, float aspectRatio, float near = 0.0f, float far = 100.f);
         ~PerspecCamera();
         
         void setProjection(float fov, float aspectRatio, float near, float far);
@@ -27,6 +27,9 @@ namespace Crude::Utils
         
         inline float getFOV() const { return m_FrustrumData.FOV; }
         inline float getAspectRatio() const { return m_FrustrumData.AspectRatio; }
+        inline std::pair<float, float> getNearFarPlanes() const { return {m_FrustrumData.Near, m_FrustrumData.Far}; };
+        inline float getNearPlane() const { return m_FrustrumData.Near; }
+        inline float getFarPlane() const { return m_FrustrumData.Far; }
         
         class PerspecFrustrumData
         {

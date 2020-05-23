@@ -10,8 +10,8 @@
 
 namespace Crude::Utils
 {
-    OrthoCameraController::OrthoCameraController(float aspectRatio, float zoom)
-    : m_AspectRatio(aspectRatio), m_ZoomLevel(zoom), m_Camera(-aspectRatio * zoom, aspectRatio * zoom, -zoom, zoom)
+    OrthoCameraController::OrthoCameraController(float aspectRatio)
+    : m_AspectRatio(aspectRatio), m_ZoomLevel(1.0f), m_Camera(-aspectRatio / 1.0f, aspectRatio / 1.0f, -1.0f, 1.0f)
     {
         
     }
@@ -26,30 +26,52 @@ namespace Crude::Utils
     
     void OrthoCameraController::onUpdate(Timestep deltaTime)
     {
-        if(Input::isKeyPressed(CRD_KEY_RIGHT))
-        {
-            m_CameraPosition.x -= m_CameraTranslationSpeed * deltaTime; //the x-axis seems to be inverted
-        }
-        if(Input::isKeyPressed(CRD_KEY_LEFT))
-        {
-            m_CameraPosition.x += m_CameraTranslationSpeed * deltaTime;
-        }
         
-        if(Input::isKeyPressed(CRD_KEY_UP))
+        if(m_ScaleTranslationSpeedWithZoom)
         {
-            m_CameraPosition.y += m_CameraTranslationSpeed * deltaTime;
+            if(Input::isKeyPressed(CRD_KEY_RIGHT))
+            {
+                m_CameraPosition.x -= (m_CameraTranslationSpeed/m_ZoomLevel) * deltaTime; //the x-axis seems to be inverted
+            }
+            if(Input::isKeyPressed(CRD_KEY_LEFT))
+            {
+                m_CameraPosition.x += (m_CameraTranslationSpeed/m_ZoomLevel) * deltaTime;
+            }
+            
+            if(Input::isKeyPressed(CRD_KEY_UP))
+            {
+                m_CameraPosition.y += (m_CameraTranslationSpeed/m_ZoomLevel) * deltaTime;
+            }
+            if(Input::isKeyPressed(CRD_KEY_DOWN))
+            {
+                m_CameraPosition.y -= (m_CameraTranslationSpeed/m_ZoomLevel) * deltaTime;
+            }
+            
         }
-        if(Input::isKeyPressed(CRD_KEY_DOWN))
+        else
         {
-            m_CameraPosition.y -= m_CameraTranslationSpeed * deltaTime;
+            if(Input::isKeyPressed(CRD_KEY_RIGHT))
+            {
+                m_CameraPosition.x -= m_CameraTranslationSpeed * deltaTime; //the x-axis seems to be inverted
+            }
+            if(Input::isKeyPressed(CRD_KEY_LEFT))
+            {
+                m_CameraPosition.x += m_CameraTranslationSpeed * deltaTime;
+            }
+            
+            if(Input::isKeyPressed(CRD_KEY_UP))
+            {
+                m_CameraPosition.y += m_CameraTranslationSpeed * deltaTime;
+            }
+            if(Input::isKeyPressed(CRD_KEY_DOWN))
+            {
+                m_CameraPosition.y -= m_CameraTranslationSpeed * deltaTime;
+            }
         }
         
         m_Camera.setPosition(m_CameraPosition);
         
-        if(m_FixTranslationSpeedToZoom)
-        {
-            m_CameraTranslationSpeed = m_ZoomLevel;
-        }
+        
     }
     
     bool OrthoCameraController::onWindowResizeEvent(WindowResizeEvent &event)
@@ -57,7 +79,7 @@ namespace Crude::Utils
         //LOG_TRACE("WindowResizeEvent received by OrthoCameraController");
         
         m_AspectRatio = (float)event.getWidth() / (float)event.getHeight();
-        m_Camera.setProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+        m_Camera.setProjection(-m_AspectRatio / m_ZoomLevel, m_AspectRatio / m_ZoomLevel, -1.0f/m_ZoomLevel, 1.0f/m_ZoomLevel);
         return false;
     }
     
@@ -65,9 +87,17 @@ namespace Crude::Utils
     {
         //LOG_TRACE("MouseScrolledEvent received by OrthoCameraController");
         
-        m_ZoomLevel -= event.getYOffset() * m_CameraZoomSpeed;
-        m_ZoomLevel = std::max(m_ZoomLevel, m_CameraMaxZoom);
-        m_Camera.setProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+        m_ZoomLevel += event.getYOffset() * m_CameraZoomSpeed;
+        m_ZoomLevel = std::min(m_ZoomLevel, m_CameraMaxZoom);
+        m_ZoomLevel = std::max(m_ZoomLevel, m_CameraMinZoom);
+        m_Camera.setProjection(-m_AspectRatio / m_ZoomLevel, m_AspectRatio / m_ZoomLevel, -1.0f/m_ZoomLevel, 1.0f/m_ZoomLevel);
         return false;
+    }
+    
+    void OrthoCameraController::setZoom(float zoom)
+    {
+        m_ZoomLevel = std::min(zoom, m_CameraMaxZoom);
+        m_ZoomLevel = std::min(m_ZoomLevel, m_CameraMinZoom);
+        m_Camera.setProjection(-m_AspectRatio / m_ZoomLevel, m_AspectRatio / m_ZoomLevel, -1.0f/m_ZoomLevel, 1.0f/m_ZoomLevel);
     }
 }

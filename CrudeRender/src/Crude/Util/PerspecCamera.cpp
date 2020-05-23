@@ -13,7 +13,7 @@ namespace Crude::Utils
     
     
     PerspecCamera::PerspecCamera(float fov, float aspectRatio, float near, float far)
-    : m_FrustrumData(fov, aspectRatio, near, far)
+    : Camera(), m_FrustrumData(fov, aspectRatio, near, far)
     {
         updateProjectionMatrix();
     }
