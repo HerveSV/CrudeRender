@@ -11,9 +11,7 @@
 
 #include "../../crudestd.hpp"
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "../glmHeaders.h"
 
 namespace Crude::Utils
 {
@@ -30,7 +28,7 @@ namespace Crude::Utils
         // constructor generates the shader on the fly
         // ------------------------------------------------------------------------
         Shader(const char* vertexPath, const char* fragmentPath);
-        
+        ~Shader();
         // activate the shader
         // ------------------------------------------------------------------------
         void bind() const;
@@ -40,19 +38,19 @@ namespace Crude::Utils
         // ------------------------------------------------------------------------
         int getUniformLocation(const std::string &name);
         
-        void setBool(const std::string &name, bool value, bool bindShader = false);
+        void setBool(const std::string& name, bool value, bool bindShader = false);
      
-        void setInt(const std::string &name, int value, bool bindShader = false);
+        void setInt(const std::string& name, int value, bool bindShader = false);
         
-        void setFloat(const std::string &name, float value, bool bindShader = false);
+        void setFloat(const std::string& name, float value, bool bindShader = false);
         
-        void setVec2f(const std::string &name, float x, float y, bool bindShader = false);
+        void setVec2f(const std::string& name, float x, float y, bool bindShader = false);
         
-        void setVec3f(const std::string &name, float x, float y, float z, bool bindShader = false);
+        void setVec3f(const std::string& name, float x, float y, float z, bool bindShader = false);
         
-        void setVec4f(const std::string &name, float x, float y, float z, float w, bool bindShader = false);
+        void setVec4f(const std::string& name, float x, float y, float z, float w, bool bindShader = false);
         
-        void setMat4(const std::string &name, const glm::mat4 &mat, bool bindShader = false);
+        void setMat4(const std::string& name, const glm::mat4 &mat, bool bindShader = false);
         
         unsigned int getID() const {return m_ID;}
         

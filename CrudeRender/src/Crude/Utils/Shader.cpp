@@ -69,6 +69,11 @@ namespace Crude::Utils
         glDeleteShader(fragment);
     }
 
+    Shader::~Shader()
+    {
+        glDeleteProgram(m_ID);
+    }
+
     void Shader::bind() const
     {
         glUseProgram(m_ID);
@@ -212,6 +217,7 @@ namespace Crude::Utils
         }
         else
         {
+            
             glGetProgramiv(shader, GL_LINK_STATUS, &success);
             if (!success)
             {

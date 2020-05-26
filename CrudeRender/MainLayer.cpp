@@ -119,9 +119,10 @@ void MainLayer::onAttach()
     //glBindVertexArray(vao);
     
     
-    m_Shader = std::make_unique<Shader>("CrudeAssets/shadersources/mainShader.vs", "CrudeAssets/shadersources/mainShader.fs");
+    m_Shader = new Shader("CrudeAssets/shadersources/mainShader.vs", "CrudeAssets/shadersources/mainShader.fs");
     //m_Shader = std::make_unique<Shader>("/Users/Herve/Documents/CrudeRender/CrudeRender/assets/shadersources/mainShader.vs", "/Users/Herve/Documents/CrudeRender/CrudeRender/assets/shadersources/mainShader.fs");
-    m_Shader->bind();
+    //static Shader basicShad("CrudeAssets/shadersources/mainShader.vs", "CrudeAssets/shadersources/mainShader.fs");
+    Renderer::addShader(m_Shader, "Basic");
     
     
     
@@ -195,32 +196,39 @@ void MainLayer::onUpdate(Timestep deltaTime)
     m_OCamController.onUpdate(deltaTime);
     m_PCamController.onUpdate(deltaTime);
     
-    glClearColor(1.0f, 0.4f, 0.2f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+    //glClearColor(1.0f, 0.4f, 0.2f, 1.0f);
+    //glClear(GL_COLOR_BUFFER_BIT);
+    
+    //glm::vec4 testCoord(1.0f);
+    //testCoord = viewProjection * model * testCoord;
+    //LOG_TRACE("Test Coord: {0}, {1}, {2}", testCoord.x, testCoord.y, testCoord.z);
+    //std::cout<< testCoord.x << ", " << testCoord.y << ", " << testCoord.z <<std::endl;
+    
+    //glm::mat4 viewProjection = m_OrthoCam->getViewProjectionMatrix();
+    //glm::mat4 viewProjection = m_PerspecCam->getViewProjectionMatrix();
+    //glm::mat4 viewProjection = m_OCamController.getCamera().getViewProjectionMatrix();
     
     
+    //m_Shader->bind();
+    //m_Shader->setMat4("u_ViewProjection",  viewProjection);
+    
+    Renderer::beginScene(&m_OCamController.getCamera());
+    Renderer::useShader("Basic");
     
     glm::mat4 model(1.0f);
     //model = glm::rotate(model, glm::radians(70.f), glm::vec3(1.0f, 0.f, 0.f));
     model = glm::translate(model, m_Pos);
     
+    Renderer::draw(m_vao, model);
     
-    //glm::mat4 viewProjection = m_OrthoCam->getViewProjectionMatrix();
-    //glm::mat4 viewProjection = m_PerspecCam->getViewProjectionMatrix();
-    glm::mat4 viewProjection = m_OCamController.getCamera().getViewProjectionMatrix();
     
-    glm::vec4 testCoord(1.0f);
-    testCoord = viewProjection * model * testCoord;
-    LOG_TRACE("Test Coord: {0}, {1}, {2}", testCoord.x, testCoord.y, testCoord.z);
-    //std::cout<< testCoord.x << ", " << testCoord.y << ", " << testCoord.z <<std::endl;
-    
-    m_Shader->bind();
-    m_Shader->setMat4("u_MVP",  viewProjection * model);
-    m_Shader->setVec4f("u_Colour", 0.5f, 0.5f, 1.0f, 1.0f);
+   // m_Shader->setMat4("u_Model", model);
+    //m_Shader->setVec4f("u_Colour", 0.5f, 0.5f, 1.0f, 1.0f);
 
-    m_vao.bind();
-    glDrawElements(GL_TRIANGLES, m_vao.getIndexBuffer().getCount(), GL_UNSIGNED_INT, nullptr);
+    //m_vao.bind();
+    //glDrawElements(GL_TRIANGLES, m_vao.getIndexBuffer().getCount(), GL_UNSIGNED_INT, nullptr);
     
+    Renderer::endScene();
 
 }
 

@@ -11,9 +11,7 @@
 
 #include "../../crudestd.hpp"
 
-#include "glm/glm.hpp"
-#include "glm/gtc/type_ptr.hpp"
-#include "glm/gtc/matrix_transform.hpp"
+#include "../glmHeaders.h"
 
 namespace Crude::Utils
 {

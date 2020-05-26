@@ -10,7 +10,7 @@
 #define MainLayer_hpp
 
 #include "src/CrudeRender.h"
-#include "src/CrudeUtil.h"
+#include "src/CrudeRenderUtils.h"
 
 
 
@@ -44,7 +44,8 @@ private:
     
     glm::vec3 m_Pos = glm::vec3(0.0f);
     Crude::Utils::VertexArray m_vao;
-    std::unique_ptr<Crude::Utils::Shader> m_Shader;
+    //std::unique_ptr<Crude::Utils::Shader> m_Shader;
+    Crude::Utils::Shader* m_Shader;
     
     bool m_showDemo = true;
 };
