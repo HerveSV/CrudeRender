@@ -59,7 +59,7 @@ namespace Crude::Utils
         float m_CameraTranslationSpeed = 3.0f;
         
     private:
-        bool m_ScaleTranslationSpeedWithZoom = true;
+        bool m_ScaleTranslationSpeedWithZoom = false;
         
     };
 }

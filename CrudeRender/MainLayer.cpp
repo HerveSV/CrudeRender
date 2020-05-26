@@ -20,7 +20,7 @@ MainLayer::MainLayer()
 void MainLayer::onAttach()
 {
     
-    const char* vert =
+    /*const char* vert =
     "#version 410 core\n"
     "layout (location = 0) in vec3 aPos;\n"
     "void main()\n"
@@ -34,7 +34,7 @@ void MainLayer::onAttach()
     "void main()\n"
     "{\n"
     "FragColour = vec4(1.0f, 0.3f, 0.5f, 1.0f);\n"
-    "}\n";
+    "}\n";*/
     
     /*unsigned int vertexShader = 0;
      vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -106,6 +106,19 @@ void MainLayer::onAttach()
     //m_shader = Crude::Shader(vert, frag);
     //m_shader.bind();
     
+    /*unsigned int vbo, ebo;
+     glGenBuffers(1, &vbo);
+     glBindBuffer(GL_ARRAY_BUFFER, vbo);
+     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+     glEnableVertexAttribArray(0);
+     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
+     
+     glGenBuffers(1, &ebo);
+     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);/**/
+    //glBindVertexArray(vao);
+    
+    
     m_Shader = std::make_unique<Shader>("CrudeAssets/shadersources/mainShader.vs", "CrudeAssets/shadersources/mainShader.fs");
     //m_Shader = std::make_unique<Shader>("/Users/Herve/Documents/CrudeRender/CrudeRender/assets/shadersources/mainShader.vs", "/Users/Herve/Documents/CrudeRender/CrudeRender/assets/shadersources/mainShader.fs");
     m_Shader->bind();
@@ -132,18 +145,7 @@ void MainLayer::onAttach()
     
     m_vao.bind();
     
-    /*unsigned int vbo, ebo;
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
-    
-    glGenBuffers(1, &ebo);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);/**/
-    //glBindVertexArray(vao);
- 
+
 
     static VertexBuffer vbo(vertices, sizeof(vertices));
     VertexBufferLayout layout;
@@ -167,14 +169,14 @@ void MainLayer::onAttach()
     
     glm::vec4 test = {0.f, 0.f, 0.f, 0.f};
     test = m_PCamController.getCamera().getViewProjectionMatrix() * test;
-    LOG_TRACE("Test Coord: {0}, {1}, {2}", test.x, test.y, test.z);
+    //LOG_TRACE("Test Coord: {0}, {1}, {2}", test.x, test.y, test.z);
     
     //m_OCamController.getCamera().setProjection(-aspectRatio, aspectRatio, -1.f, 1.f);
     //m_PerspecCam.setPosition(glm::vec3(0.0f, 0.0f, -3.0f));
     m_PerspecCam = new PerspecCamera(glm::radians(45.f), aspectRatio, 0.1f, 100.f);
     m_PerspecCam->setPosition(glm::vec3(0.0f, 0.0f, -3.0f));
     
-    m_PCamController.getCamera().setPosition(glm::vec3(0.0f, 0.0f, -3.0f));
+    m_PCamController.getCamera().setPosition(glm::vec3(0.0f, 0.0f, 6.0f));
     m_PCamController.setBaseFOV(glm::radians(45.f));
     m_PCamController.setFOVBounds(glm::radians(10.f), glm::radians(140.f));
     //m_PCamController.setZoom(1.0f);
@@ -196,8 +198,12 @@ void MainLayer::onUpdate(Timestep deltaTime)
     glClearColor(1.0f, 0.4f, 0.2f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     
+    
+    
     glm::mat4 model(1.0f);
+    //model = glm::rotate(model, glm::radians(70.f), glm::vec3(1.0f, 0.f, 0.f));
     model = glm::translate(model, m_Pos);
+    
     
     //glm::mat4 viewProjection = m_OrthoCam->getViewProjectionMatrix();
     //glm::mat4 viewProjection = m_PerspecCam->getViewProjectionMatrix();
@@ -205,7 +211,7 @@ void MainLayer::onUpdate(Timestep deltaTime)
     
     glm::vec4 testCoord(1.0f);
     testCoord = viewProjection * model * testCoord;
-   // LOG_TRACE("Test Coord: {0}, {1}, {2}", testCoord.x, testCoord.y, testCoord.z);
+    LOG_TRACE("Test Coord: {0}, {1}, {2}", testCoord.x, testCoord.y, testCoord.z);
     //std::cout<< testCoord.x << ", " << testCoord.y << ", " << testCoord.z <<std::endl;
     
     m_Shader->bind();

@@ -65,27 +65,36 @@ namespace Crude::Utils
         {
             if(Input::isKeyPressed(CRD_KEY_RIGHT))
             {
-                m_CameraPosition.x -= m_CameraTranslationSpeed * deltaTime; //the x-axis seems to be inverted
+                m_CameraPosition.x -= (m_CameraTranslationSpeed) * deltaTime; //the x-axis seems to be inverted
             }
             if(Input::isKeyPressed(CRD_KEY_LEFT))
             {
-                m_CameraPosition.x += m_CameraTranslationSpeed * deltaTime;
+                m_CameraPosition.x += (m_CameraTranslationSpeed) * deltaTime;
             }
             
             if(Input::isKeyPressed(CRD_KEY_UP))
             {
-                m_CameraPosition.y += m_CameraTranslationSpeed * deltaTime;
+                m_CameraPosition.z += (m_CameraTranslationSpeed) * deltaTime;
             }
             if(Input::isKeyPressed(CRD_KEY_DOWN))
             {
-                m_CameraPosition.y -= m_CameraTranslationSpeed * deltaTime;
+                m_CameraPosition.z -= (m_CameraTranslationSpeed) * deltaTime;
+            }
+            
+            if(Input::isKeyPressed(CRD_KEY_SPACE))
+            {
+                m_CameraPosition.y += (m_CameraTranslationSpeed) * deltaTime;
+            }
+            if(Input::isKeyPressed(CRD_KEY_LEFT_CONTROL) || Input::isKeyPressed(CRD_KEY_RIGHT_CONTROL))
+            {
+                m_CameraPosition.y -= (m_CameraTranslationSpeed) * deltaTime;
             }
         }
         
-        LOG_INFO("Aspect Ratio: {0}", m_AspectRatio);
+        /*LOG_INFO("Aspect Ratio: {0}", m_AspectRatio);
         LOG_INFO("Zoom: {0}", m_ZoomLevel);
         LOG_INFO("Base FOV: {0}", glm::degrees(m_BaseFOV));
-        LOG_INFO("Real FOV: {0}", glm::degrees(m_BaseFOV/m_ZoomLevel));
+        LOG_INFO("Real FOV: {0}", glm::degrees(m_BaseFOV/m_ZoomLevel));*/
         
         m_Camera.setPosition(m_CameraPosition);
     }

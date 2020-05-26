@@ -75,7 +75,7 @@ namespace Crude::Utils
         float m_CameraTranslationSpeed = 5.0f;
         
     private:
-        bool m_ScaleTranslationSpeedWithZoom = true;
+        bool m_ScaleTranslationSpeedWithZoom = false;
         
         /* WARNING:
          
