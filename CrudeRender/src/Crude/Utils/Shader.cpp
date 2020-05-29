@@ -13,7 +13,7 @@
 namespace Crude::Utils
 {
 
-    Shader::Shader(const char* vertexPath, const char* fragmentPath)
+    Shader::Shader(const std::string& vertexPath, const std::string& fragmentPath)
     {
         // 1. retrieve the vertex/fragment source code from filePath
         std::string vertexCode;
@@ -67,28 +67,156 @@ namespace Crude::Utils
         // delete the shaders as they're linked into our program now and no longer necessary
         glDeleteShader(vertex);
         glDeleteShader(fragment);
+        
+        m_Initialised = true;
+    }
+    
+    
+    Shader::Shader()
+    {
+        
     }
 
     Shader::~Shader()
     {
-        glDeleteProgram(m_ID);
+        if(m_Initialised)
+        {
+            LOG_TRACE("Shader Program ID<{0}> deleted", m_ID);
+            glDeleteProgram(m_ID);
+        }
     }
+    
+    void Shader::loadFromFile(const std::string& vertexPath, const std::string& fragmentPath)
+    {
+        if(m_Initialised)
+        {
+            LOG_ERROR("Shader already initialised, create a new Shader object if you need another Shader Program");
+            return;
+        }
+        
+        // 1. retrieve the vertex/fragment source code from filePath
+        std::string vertexCode;
+        std::string fragmentCode;
+        std::ifstream vShaderFile;
+        std::ifstream fShaderFile;
+        // ensure ifstream objects can throw exceptions:
+        vShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
+        fShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
+        try
+        {
+            // open files
+            vShaderFile.open(vertexPath);
+            fShaderFile.open(fragmentPath);
+            std::stringstream vShaderStream, fShaderStream;
+            // read file's buffer contents into streams
+            vShaderStream << vShaderFile.rdbuf();
+            fShaderStream << fShaderFile.rdbuf();
+            // close file handlers
+            vShaderFile.close();
+            fShaderFile.close();
+            // convert stream into string
+            vertexCode   = vShaderStream.str();
+            fragmentCode = fShaderStream.str();
+        }
+        catch (std::ifstream::failure& e)
+        {
+            LOG_ERROR("SHADER::FILE_NOT_SUCCESFULLY_READ");
+            //std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
+        }
+        const char* vShaderCode = vertexCode.c_str();
+        const char * fShaderCode = fragmentCode.c_str();
+        // 2. compile shaders
+        unsigned int vertex, fragment;
+        // vertex shader
+        vertex = glCreateShader(GL_VERTEX_SHADER);
+        glShaderSource(vertex, 1, &vShaderCode, NULL);
+        glCompileShader(vertex);
+        checkCompileErrors(vertex, "VERTEX");
+        // fragment Shader
+        fragment = glCreateShader(GL_FRAGMENT_SHADER);
+        glShaderSource(fragment, 1, &fShaderCode, NULL);
+        glCompileShader(fragment);
+        checkCompileErrors(fragment, "FRAGMENT");
+        // shader Program
+        m_ID = glCreateProgram();
+        glAttachShader(m_ID, vertex);
+        glAttachShader(m_ID, fragment);
+        glLinkProgram(m_ID);
+        checkCompileErrors(m_ID, "PROGRAM");
+        // delete the shaders as they're linked into our program now and no longer necessary
+        glDeleteShader(vertex);
+        glDeleteShader(fragment);
+        
+        m_Initialised = true;
+    }
+    
+    void Shader::loadFromSource(const std::string &vertexSrc, const std::string &fragmentSrc)
+    {
+        if(m_Initialised)
+        {
+            LOG_ERROR("Shader already initialised, create a new Shader object if you need another Shader Program");
+            return;
+        }
+        
+        const char* vShaderCode = vertexSrc.c_str();
+        const char * fShaderCode = fragmentSrc.c_str();
+        // 2. compile shaders
+        unsigned int vertex, fragment;
+        // vertex shader
+        vertex = glCreateShader(GL_VERTEX_SHADER);
+        glShaderSource(vertex, 1, &vShaderCode, NULL);
+        glCompileShader(vertex);
+        checkCompileErrors(vertex, "VERTEX");
+        // fragment Shader
+        fragment = glCreateShader(GL_FRAGMENT_SHADER);
+        glShaderSource(fragment, 1, &fShaderCode, NULL);
+        glCompileShader(fragment);
+        checkCompileErrors(fragment, "FRAGMENT");
+        // shader Program
+        m_ID = glCreateProgram();
+        glAttachShader(m_ID, vertex);
+        glAttachShader(m_ID, fragment);
+        glLinkProgram(m_ID);
+        checkCompileErrors(m_ID, "PROGRAM");
+        // delete the shaders as they're linked into our program now and no longer necessary
+        glDeleteShader(vertex);
+        glDeleteShader(fragment);
+        
+        m_Initialised = true;
+    }
+    
+    
 
     void Shader::bind() const
     {
+        if(!m_Initialised)
+        {
+            LOG_ERROR("Uninitialised Shader cannot be bound!");
+            return;
+        }
         glUseProgram(m_ID);
     }
 
     void Shader::unbind() const
     {
+        if(!m_Initialised)
+        {
+            LOG_ERROR("Uninitialised Shader cannot be bound!");
+            return;
+        }
         glUseProgram(0);
     }
 
     int Shader::getUniformLocation(const std::string &name)
     {
-        if(m_uniformLocationCache.find(name) != m_uniformLocationCache.end())
+        if(!m_Initialised)
         {
-            return m_uniformLocationCache[name];
+            LOG_ERROR("Uninitialised Shader! Uniforms are nonexistant");
+            return NULL;
+        }
+        if(m_UniformLocationCache.find(name) != m_UniformLocationCache.end())
+        {
+            return m_UniformLocationCache[name];
         }
         
         int location = glGetUniformLocation(m_ID, name.c_str());
@@ -97,12 +225,17 @@ namespace Crude::Utils
             LOG_WARN("Uniform {0} does not exist!", name);
             //std::cout<<"Warning: uniform "<<name<<" does not exist!"<<std::endl;
         }
-        m_uniformLocationCache[name] = location;
+        m_UniformLocationCache[name] = location;
         return location;
     }
 
     void Shader::setBool(const std::string &name, bool value, bool bindShader)
     {
+        if(!m_Initialised)
+        {
+            LOG_ERROR("Uninitialised Shader! Uniforms are nonexistant");
+            return;
+        }
         if(bindShader)
         {
             bind();
@@ -118,6 +251,11 @@ namespace Crude::Utils
 
     void Shader::setInt(const std::string &name, int value, bool bindShader)
     {
+        if(!m_Initialised)
+        {
+            LOG_ERROR("Uninitialised Shader! Uniforms are nonexistant");
+            return;
+        }
         if(bindShader)
         {
             bind();
@@ -132,6 +270,11 @@ namespace Crude::Utils
 
     void Shader::setFloat(const std::string &name, float value, bool bindShader)
     {
+        if(!m_Initialised)
+        {
+            LOG_ERROR("Uninitialised Shader! Uniforms are nonexistant");
+            return;
+        }
         if(bindShader)
         {
             bind();
@@ -147,6 +290,11 @@ namespace Crude::Utils
 
     void Shader::setVec2f(const std::string &name, float x, float y, bool bindShader)
     {
+        if(!m_Initialised)
+        {
+            LOG_ERROR("Uninitialised Shader! Uniforms are nonexistant");
+            return;
+        }
         if(bindShader)
         {
             bind();
@@ -161,6 +309,11 @@ namespace Crude::Utils
 
     void Shader::setVec3f(const std::string &name, float x, float y, float z, bool bindShader)
     {
+        if(!m_Initialised)
+        {
+            LOG_ERROR("Uninitialised Shader! Uniforms are nonexistant");
+            return;
+        }
         if(bindShader)
         {
             bind();
@@ -175,6 +328,11 @@ namespace Crude::Utils
 
     void Shader::setVec4f(const std::string &name, float x, float y, float z, float w, bool bindShader)
     {
+        if(!m_Initialised)
+        {
+            LOG_ERROR("Uninitialised Shader! Uniforms are nonexistant");
+            return;
+        }
         if(bindShader)
         {
             bind();
@@ -189,6 +347,11 @@ namespace Crude::Utils
 
     void Shader::setMat4(const std::string &name, const glm::mat4 &mat, bool bindShader)
     {
+        if(!m_Initialised)
+        {
+            LOG_ERROR("Uninitialised Shader! Uniforms are nonexistant");
+            return;
+        }
         if(bindShader)
         {
             bind();

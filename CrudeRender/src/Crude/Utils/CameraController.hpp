@@ -9,19 +9,13 @@
 #ifndef CameraController_hpp
 #define CameraController_hpp
 
+#include "Controller.hpp"
 #include "Camera.hpp"
-#include "../Events/Event.h"
-#include "../Events/ApplicationEvent.h"
-#include "../Events/KeyEvent.h"
-#include "../Events/MouseEvent.h"
-#include "../Core/Input.hpp"
-#include "../Core/KeyCodes.h"
-#include "../Core/MouseButtonCodes.h"
-#include "../Core/Timestep.h"
+
 
 namespace Crude::Utils
 {
-    class CameraController
+    class CameraController : public Controller
     {
     public:
         CameraController() {};

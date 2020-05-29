@@ -19,16 +19,25 @@ namespace Crude::Utils
     class Shader
     {
     private:
+        bool m_Initialised = false;
         
         unsigned int m_ID;
         
-        std::unordered_map<std::string, int> m_uniformLocationCache;
+        std::unordered_map<std::string, int> m_UniformLocationCache;
         
     public:
         // constructor generates the shader on the fly
         // ------------------------------------------------------------------------
-        Shader(const char* vertexPath, const char* fragmentPath);
+        Shader(const std::string& vertexPath, const std::string& fragmentPath);
+        // If the user prefers to generate shader later on
+        Shader();
         ~Shader();
+        
+        // Contructs shader from file
+        void loadFromFile(const std::string& vertexPath, const std::string& fragmentPath);
+        // Constructs shader from source string
+        void loadFromSource(const std::string& vertexSrc, const std::string& fragmentSrc);
+        
         // activate the shader
         // ------------------------------------------------------------------------
         void bind() const;
@@ -58,6 +67,13 @@ namespace Crude::Utils
         // utility function for checking shader compilation/linking errors.
         // ------------------------------------------------------------------------
         void checkCompileErrors(unsigned int shader, std::string type);
+    };
+    
+    
+    class ShaderLibrary
+    {
+    public:
+        
     };
     
 }

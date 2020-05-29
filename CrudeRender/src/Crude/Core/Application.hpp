@@ -50,6 +50,7 @@ namespace Crude
         float m_LastFrameTime = 0.0f;
         
         inline static Application* s_Instance = nullptr;
+    
     };
 }
 

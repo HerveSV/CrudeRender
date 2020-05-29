@@ -27,6 +27,7 @@ int main(int argc, const char * argv[])
 {
     
     std::unique_ptr<MainApplication> app = std::make_unique<MainApplication>();
+
     app->Run();
     
     

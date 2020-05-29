@@ -23,6 +23,8 @@ public:
     
     virtual void onAttach() override;
     
+    virtual void onDetach() override;
+    
     virtual void onUpdate(Crude::Timestep deltaTime) override;
     
     virtual void onImGuiRender() override;
@@ -35,17 +37,20 @@ private:
     
     
 private:
-    
+
     Crude::Utils::OrthoCameraController m_OCamController;
     Crude::Utils::PerspecCameraController m_PCamController;
-    Crude::Utils::OrthoCamera* m_OrthoCam;
-    Crude::Utils::PerspecCamera* m_PerspecCam;
+    //Crude::Utils::OrthoCamera* m_OrthoCam;
+    //Crude::Utils::PerspecCamera* m_PerspecCam;
     //Crude::Utils::VertexBuffer* m_vbo;
     
     glm::vec3 m_Pos = glm::vec3(0.0f);
     Crude::Utils::VertexArray m_vao;
     //std::unique_ptr<Crude::Utils::Shader> m_Shader;
-    Crude::Utils::Shader* m_Shader;
+    Crude::Utils::Shader m_FlatColourShader, m_TextureShader;
+    
+    Crude::Utils::TextureLibrary m_TextureLibrary;
+    //Crude::Utils::Texture *m_ContainerTexture, *m_FaceTexture, *m_BlendTexture;
     
     bool m_showDemo = true;
 };

@@ -22,8 +22,14 @@ namespace Crude
         {
             Log::init();
         }
+        else
+        {
+            LOG_WARN("Crude::Application class(or any of it's children) should not be instanciated more than once");
+        }
         
         assert(!s_Instance && "Crude::Application class(or any of it's children) instanciated more than once");
+        
+        
         s_Instance = this;
         
         m_Window = std::unique_ptr<Window>(Window::create());

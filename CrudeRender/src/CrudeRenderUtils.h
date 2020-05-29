@@ -11,19 +11,23 @@
 
 #include "Crude/glmHeaders.h"
 
-#include "Crude//Utils/Renderer.hpp"
+#include "Crude/Utils/Renderer.hpp"
+#include "Crude/Utils/RenderCommands.hpp"
 
 #include "Crude/Utils/Shader.hpp"
 #include "Crude/Utils/IndexBuffer.hpp"
 #include "Crude/Utils/VertexBuffer.hpp"
 #include "Crude/Utils/VertexArray.hpp"
 #include "Crude/Utils/VertexBufferLayout.hpp"
+#include "Crude/Utils/Texture.hpp"
+
 
 #include "Crude/Utils/OrthoCamera.hpp"
 #include "Crude/Utils/PerspecCamera.hpp"
 #include "Crude/Utils/OrthoCameraController.hpp"
 #include "Crude/Utils/PerspecCameraController.hpp"
 
+#include "Crude/Utils/Controller.hpp"
 
 
 #endif /* CrudeUtil_h */

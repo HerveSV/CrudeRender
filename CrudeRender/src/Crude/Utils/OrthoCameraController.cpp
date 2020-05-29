@@ -87,6 +87,13 @@ namespace Crude::Utils
     {
         //LOG_TRACE("MouseScrolledEvent received by OrthoCameraController");
         
+        /*auto[x, y]  = Input::getMousePosition();
+        m_CameraPosition.x = x;
+        m_CameraPosition.y = y;
+        m_CameraPosition.z = m_CameraPosition.z;*/
+        //m_Camera.setPosition({x, y, m_Camera.getPosition().z});
+        
+        
         m_ZoomLevel += event.getYOffset() * m_CameraZoomSpeed;
         m_ZoomLevel = std::min(m_ZoomLevel, m_CameraMaxZoom);
         m_ZoomLevel = std::max(m_ZoomLevel, m_CameraMinZoom);

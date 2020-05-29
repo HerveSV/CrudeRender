@@ -20,7 +20,7 @@ namespace Crude::Utils
 
     VertexArray::~VertexArray()
     {
-        LOG_TRACE("Vertex Array ID<{0)> deleted");
+        LOG_TRACE("Vertex Array ID<{0}> deleted", m_ID);
         glDeleteVertexArrays(1, &m_ID);
     }
 

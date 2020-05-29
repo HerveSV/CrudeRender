@@ -20,119 +20,29 @@ MainLayer::MainLayer()
 void MainLayer::onAttach()
 {
     
-    /*const char* vert =
-    "#version 410 core\n"
-    "layout (location = 0) in vec3 aPos;\n"
-    "void main()\n"
-    "{\n"
-    "gl_Position = vec4(aPos, 1.0f);\n"
-    "}\n";
-    
-    const char* frag =
-    "#version 410 core\n"
-    "out vec4 FragColour;\n"
-    "void main()\n"
-    "{\n"
-    "FragColour = vec4(1.0f, 0.3f, 0.5f, 1.0f);\n"
-    "}\n";*/
-    
-    /*unsigned int vertexShader = 0;
-     vertexShader = glCreateShader(GL_VERTEX_SHADER);
-     glShaderSource(vertexShader, 1, &vert, NULL);
-     glCompileShader(vertexShader);
-     
-     //checking for compile time errors, in this case for the vertex shader compilation
-     int  success;
-     char infoLog[512];
-     glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success); //checks if comp. is successful and stores it in the int
-     if(!success)
-     {
-     glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-     std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-     }
-     
-     unsigned int fragmentShader = 0;
-     fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-     glShaderSource(fragmentShader, 1, &frag, NULL);
-     glCompileShader(fragmentShader);
-     
-     glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success); //checks if comp. is successful and stores it in the int
-     if(!success)
-     {
-     glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-     std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-     }
-     
-     unsigned int shaderProgram1 = 0;
-     shaderProgram1 = glCreateProgram();
-     glAttachShader(shaderProgram1, vertexShader);
-     glAttachShader(shaderProgram1, fragmentShader);
-     glLinkProgram(shaderProgram1);
-     
-     glUseProgram(shaderProgram1);*/
+   
     
     
-    /*Crude::VertexArray vao;
-     vao.bind();
-     Crude::VertexBuffer vbo(vertices, sizeof(vertices));
-     Crude::VertexBufferLayout layout;
-     layout.push<float>(3);
-     Crude::IndexBuffer ebo(indices, 6);
-     
-     vao.addVertexBuffer(vbo, layout);
-     vao.addIndexBuffer(ebo);*/
+    //m_FlatColourShader = new Shader("CrudeAssets/shadersources/colourShader.vs", "CrudeAssets/shadersources/colourShader.fs");
+    //m_TextureShader = new Shader("CrudeAssets/shadersources/textureShader.vs", "CrudeAssets/shadersources/textureShader.fs");
+    
+    m_FlatColourShader.loadFromFile("CrudeAssets/shadersources/colourShader.vs", "CrudeAssets/shadersources/colourShader.fs");
+    m_TextureShader.loadFromFile("CrudeAssets/shadersources/textureShader.vs", "CrudeAssets/shadersources/textureShader.fs");
     
     
-    //
-    /*unsigned int vao, ebo;
-     
-     glGenVertexArrays(1, &vao);
-     glBindVertexArray(vao);
-     
-     //glBindBuffer(GL_ARRAY_BUFFER, vbo.getID());
-     //vbo.bind();
-     unsigned int vbo;
-     glGenBuffers(1, &vbo);
-     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-     //Crude::VertexBuffer* vbo = new Crude::VertexBuffer(&vertices, sizeof(vertices));
-     glEnableVertexAttribArray(0);
-     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
-     
-     glGenBuffers(1, &ebo);
-     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);*/
-    
-    //m_shader = Crude::Shader(vert, frag);
-    //m_shader.bind();
-    
-    /*unsigned int vbo, ebo;
-     glGenBuffers(1, &vbo);
-     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-     glEnableVertexAttribArray(0);
-     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
-     
-     glGenBuffers(1, &ebo);
-     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);/**/
-    //glBindVertexArray(vao);
-    
-    
-    m_Shader = new Shader("CrudeAssets/shadersources/mainShader.vs", "CrudeAssets/shadersources/mainShader.fs");
     //m_Shader = std::make_unique<Shader>("/Users/Herve/Documents/CrudeRender/CrudeRender/assets/shadersources/mainShader.vs", "/Users/Herve/Documents/CrudeRender/CrudeRender/assets/shadersources/mainShader.fs");
     //static Shader basicShad("CrudeAssets/shadersources/mainShader.vs", "CrudeAssets/shadersources/mainShader.fs");
-    Renderer::addShader(m_Shader, "Basic");
+    //Renderer::addShader(m_Shader, "Basic");
     
     
     
     float vertices[]
     {
         
-        0.5f, 0.5f, 0.0f,
-        -0.5f, 0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f,
-        -0.5f, -0.5f, 0.0f,
+         0.5f,  0.5f, 0.0f,   1.0f, 1.0f,
+        -0.5f,  0.5f, 0.0f,   0.0f, 1.0f,
+         0.5f, -0.5f, 0.0f,   1.0f, 0.0f,
+        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f,
     };
     unsigned int indices[]
     {
@@ -151,6 +61,7 @@ void MainLayer::onAttach()
     static VertexBuffer vbo(vertices, sizeof(vertices));
     VertexBufferLayout layout;
     layout.pushFloat(3);
+    layout.pushFloat(2);
     
     static IndexBuffer ibo(indices, 6);
     
@@ -165,8 +76,8 @@ void MainLayer::onAttach()
     float aspectRatio = (float)width/(float)height;
     
     
-    m_OrthoCam = new OrthoCamera(-aspectRatio, aspectRatio, -1.f, 1.f);
-    m_OrthoCam->setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+    //m_OrthoCam = new OrthoCamera(-aspectRatio, aspectRatio, -1.f, 1.f);
+    //m_OrthoCam->setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
     
     glm::vec4 test = {0.f, 0.f, 0.f, 0.f};
     test = m_PCamController.getCamera().getViewProjectionMatrix() * test;
@@ -174,28 +85,44 @@ void MainLayer::onAttach()
     
     //m_OCamController.getCamera().setProjection(-aspectRatio, aspectRatio, -1.f, 1.f);
     //m_PerspecCam.setPosition(glm::vec3(0.0f, 0.0f, -3.0f));
-    m_PerspecCam = new PerspecCamera(glm::radians(45.f), aspectRatio, 0.1f, 100.f);
-    m_PerspecCam->setPosition(glm::vec3(0.0f, 0.0f, -3.0f));
+    //m_PerspecCam = new PerspecCamera(glm::radians(45.f), aspectRatio, 0.1f, 100.f);
+    //m_PerspecCam->setPosition(glm::vec3(0.0f, 0.0f, -3.0f));
     
     m_PCamController.getCamera().setPosition(glm::vec3(0.0f, 0.0f, 6.0f));
     m_PCamController.setBaseFOV(glm::radians(45.f));
     m_PCamController.setFOVBounds(glm::radians(10.f), glm::radians(140.f));
-    //m_PCamController.setZoom(1.0f);
     
-    //m_TestCam = new OrthographicCamera(-aspectRatio, aspectRatio, -1.f, 1.f);
-    //m_TestCam->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
-    //cam.setProjection(-720.f/2, 720.f/2, 1280.f/2, -1280.f/2, -1.f, 1.f);
     
-    //LOG_INFO("Stuff: {0}", m_vao.getIndexBuffer().getCount());
-    //m_Shader = Crude::Shader("assets/shadersources/mainShader.vs", "assets/shadersources/mainShader.fs");
-    //m_Shader->bind();
+    /*m_ContainerTexture = new Texture("CrudeAssets/textures/container.png");
+    m_FaceTexture = new Texture("CrudeAssets/textures/awesomeface.png");
+    m_BlendTexture = new Texture("CrudeAssets/textures/circleSprite.png");
+    
+    m_TextureLibrary.add("container", *m_ContainerTexture);
+    m_TextureLibrary.add("awesomeface", *m_FaceTexture);
+    m_TextureLibrary.add("circle", *m_BlendTexture);*/
+    m_TextureLibrary.load("container", "CrudeAssets/textures/container.png");
+    m_TextureLibrary.load("awesomeface", "CrudeAssets/textures/awesomeface.png");
+    m_TextureLibrary.load("circle", "CrudeAssets/textures/circleSprite.png");
+    m_TextureLibrary.load("square", "CrudeAssets/textures/squareSprite.png");
+    
+    
+    m_TextureShader.setInt("u_Texture1", 0);
+    
+    //RenderCommands::enableVSync(true);
+    RenderCommands::setClearColour(1.0f, 0.4f, 0.2f, 1.0f);
+    //RenderCommands::enableDepthTesting(true);
+    RenderCommands::enableBlending(true);
+    
+    //RenderCommands::enableWireframeMode(true);
+    
 }
 
 void MainLayer::onUpdate(Timestep deltaTime)
 {
+    //LOG_TRACE(deltaTime);
     m_OCamController.onUpdate(deltaTime);
-    m_PCamController.onUpdate(deltaTime);
-    
+    //m_PCamController.onUpdate(deltaTime);
+
     //glClearColor(1.0f, 0.4f, 0.2f, 1.0f);
     //glClear(GL_COLOR_BUFFER_BIT);
     
@@ -211,15 +138,41 @@ void MainLayer::onUpdate(Timestep deltaTime)
     
     //m_Shader->bind();
     //m_Shader->setMat4("u_ViewProjection",  viewProjection);
+    RenderCommands::clearColourBuffer();
+    RenderCommands::clearDepthBuffer();
     
-    Renderer::beginScene(&m_OCamController.getCamera());
-    Renderer::useShader("Basic");
-    
+    Renderer::beginScene(m_OCamController.getCamera());
+    //Renderer::useShader("Basic");
+   
     glm::mat4 model(1.0f);
     //model = glm::rotate(model, glm::radians(70.f), glm::vec3(1.0f, 0.f, 0.f));
-    model = glm::translate(model, m_Pos);
+    //model = glm::translate(model, m_Pos);
     
-    Renderer::draw(m_vao, model);
+    glm::mat4 model2(1.0f);
+    static float angle;
+    angle += deltaTime;
+    model = glm::translate(model, glm::vec3(3.f, 2.f, 0.f));
+    
+    model2 = glm::translate(model2, m_Pos);
+    model2 = glm::rotate(model2, angle, glm::vec3(0.f, 0.f, 1.f));
+    
+   
+    Renderer::useShader(m_FlatColourShader);
+    m_FlatColourShader.setVec4f("u_Colour", 0.5f, 0.5f, 1.0f, 1.0f);
+    Renderer::submit(m_vao, model);
+    //m_FlatColourShader->setVec4f("u_Colour", 0.1f, 0.5f, 0.3f, 1.0f);
+    //Renderer::submit(m_vao, model2);
+    Renderer::useShader(m_TextureShader);
+    m_TextureLibrary.get("circle")->bind();
+    //m_BlendTexture->bind(0);
+    Renderer::submit(m_vao, model2);
+    m_TextureLibrary.get("square")->bind();
+    //m_FaceTexture->bind(0);
+    Renderer::submit(m_vao, glm::translate(glm::mat4(1.0f), glm::vec3(-2.f, -2.f, 0.0f)));
+    
+    
+    //Renderer::draw(m_vao, glm::vec4(0.5f, 0.5f, 1.0f, 1.0f), model);
+    //Renderer::draw(m_vao, glm::vec4(0.1f, 0.5f, 0.3f, 1.0f), model2);
     
     
    // m_Shader->setMat4("u_Model", model);
@@ -272,4 +225,10 @@ bool MainLayer::onKeyTypedEvent(Crude::KeyTypedEvent& event)
 {
     LOG_TRACE("Key not captured");
     return true;
+}
+
+
+void MainLayer::onDetach()
+{
+    
 }

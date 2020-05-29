@@ -35,6 +35,9 @@ namespace Crude::Utils
         
         void unbind() const;
         
+        /*
+         Please not that the VertexArray does not either of the following buffers. It is not responsible for managing that memory because they could be used in other VertexArray objects. As such, you would likely want to declare the buffer objects as static
+         */
         void addVertexBuffer(VertexBuffer &vbo, VertexBufferLayout &layout);
         void addIndexBuffer(IndexBuffer &ibo);
         

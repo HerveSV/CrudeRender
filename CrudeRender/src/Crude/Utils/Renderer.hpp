@@ -21,21 +21,53 @@ namespace Crude::Utils
     class Renderer
     {
     public:
-        static void addShader(Shader* shader, const std::string& name);
-        static void useShader(std::string name);
         
-        static void beginScene(Camera* camera);
+        enum class ShaderViewProjectionConfig
+        {
+            PreMultiplied,
+            Separate,
+            PreMultipliedAndSeparate,
+        };
+        
+        //static void addShader(Shader* shader, const std::string& name);
+        //static void useShader(std::string name);
+        static void useShader(Shader& shader);
+        
+        static void beginScene(Camera& camera);
         static void endScene();
         
-        static void draw(VertexArray& vao, glm::mat4& modelMat);
-        static void draw(VertexArray& vao, glm::vec4& colour, glm::mat4& modelMat);
+        static void submit(const VertexArray& vao, const glm::mat4& modelMat);
+        
+        //static void draw(const VertexArray& vao, const glm::mat4& modelMat);
+        //static void draw(const VertexArray& vao, const glm::vec4& colour, const glm::mat4& modelMat);
+        
+        //inline static Shader& getShader(const std::string& name) { return *m_ShaderCache[name]; };
+        //inline static Shader& getCurrShader() { return *m_CurrShader; };
         
     private:
         inline static bool m_SceneBegun = false;
         inline static bool m_ShaderActive = false;
+
         inline static Camera* m_CurrCamera;
         inline static Shader* m_CurrShader;
-        inline static std::unordered_map<std::string, Shader*> m_ShaderCache;
+        //inline static std::unordered_map<std::string, Shader*> m_ShaderCache;
+        
+        
+        
+        
+        
+    public:
+        static void setViewMatrixName(const std::string& name);
+        static void setProjectionMatrixName(const std::string& name);
+        static void setViewProjectionMatrixName(const std::string& name);
+        static void setModelMatrixName(const std::string& name);
+    private:
+        
+        inline static std::string m_ViewMatrixName = "u_View";
+        inline static std::string m_ProjectionMatrixName = "u_Projection";
+        inline static std::string m_ViewProjectionMatrixName = "u_ViewProjection";
+        inline static std::string m_ModelMatrixName = "u_Model";
+        
     };
     
 }

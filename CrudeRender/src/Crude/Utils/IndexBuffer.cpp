@@ -23,7 +23,7 @@ namespace Crude::Utils
 
     IndexBuffer::~IndexBuffer()
     {
-        LOG_TRACE("Index Buffer ID<{0)> deleted");
+        LOG_TRACE("Index Buffer ID<{0}> deleted", m_ID);
         glDeleteBuffers(1, &m_ID);
     }
 
