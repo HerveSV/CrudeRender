@@ -30,6 +30,14 @@ namespace Crude::Utils
         inline float getNearPlane() const { return m_FrustrumData.Near; }
         inline float getFarPlane() const { return m_FrustrumData.Far; }
         
+        inline std::pair<float, float> getLeftRightPlanes() const { return {m_FrustrumData.Left, m_FrustrumData.Right}; };
+        inline float getLeftPlane() const { return m_FrustrumData.Left; }
+        inline float getRightPlane() const { return m_FrustrumData.Right; }
+        
+        inline std::pair<float, float> getTopBottomPlanes() const { return {m_FrustrumData.Top, m_FrustrumData.Bottom}; };
+        inline float getTopPlane() const { return m_FrustrumData.Top; }
+        inline float getBottomPlane() const { return m_FrustrumData.Bottom; }
+        
         class OrthoFrustrumData
         {
         public:

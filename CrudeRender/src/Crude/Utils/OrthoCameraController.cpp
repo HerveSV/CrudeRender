@@ -8,6 +8,8 @@
 
 #include "OrthoCameraController.hpp"
 
+#include "../Core/Application.hpp"
+
 namespace Crude::Utils
 {
     OrthoCameraController::OrthoCameraController(float aspectRatio)
@@ -71,6 +73,8 @@ namespace Crude::Utils
         
         m_Camera.setPosition(m_CameraPosition);
         
+        LOG_TRACE("Cam pos: {0}, {1}, {2}", m_CameraPosition.x, m_CameraPosition.y, m_CameraPosition.x);
+        
         
     }
     
@@ -87,10 +91,34 @@ namespace Crude::Utils
     {
         //LOG_TRACE("MouseScrolledEvent received by OrthoCameraController");
         
-        /*auto[x, y]  = Input::getMousePosition();
-        m_CameraPosition.x = x;
-        m_CameraPosition.y = y;
-        m_CameraPosition.z = m_CameraPosition.z;*/
+        static bool doneOnce = false;
+        
+        if(!doneOnce)
+        {
+            auto[x1, y1] = Input::getMousePosition();
+            LOG_TRACE("Mouse pos: {0}, {1}", x1, y1);
+            auto[x2, y2] = Application::get().getWindow().getDimensions();
+            LOG_TRACE("Window dim: {0}, {1}", x2, y2);
+        
+            float xRatio = x1/x2;
+            float yRatio = y1/y2;
+            
+            float camWidth = glm::abs(m_Camera.getRightPlane() - m_Camera.getLeftPlane());
+            float camHeight = glm::abs(m_Camera.getTopPlane() - m_Camera.getBottomPlane());
+            
+            float xIncrement = camWidth * xRatio;
+            float yIncrement = camHeight * yRatio;
+            
+            m_CameraPosition.x = xIncrement;
+            m_CameraPosition.y = yIncrement;
+            //float ratio[2] = {x1/x2, y1/y2};
+            doneOnce = true;
+        }
+        //float newX = m_CameraPosition.x + (x1 - x2);
+        //float newY = m_CameraPosition.y + (y1 - y2);
+        //m_CameraPosition.x = x;
+        //m_CameraPosition.y = y;
+        //m_CameraPosition.z = m_CameraPosition.z;*/
         //m_Camera.setPosition({x, y, m_Camera.getPosition().z});
         
         

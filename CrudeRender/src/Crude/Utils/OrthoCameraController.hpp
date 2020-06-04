@@ -49,7 +49,9 @@ namespace Crude::Utils
     protected:
         OrthoCamera m_Camera;
         
+    public://temporary
         glm::vec3 m_CameraPosition = {0.0f, 0.0f, 0.0f};
+    protected:
         float m_ZoomLevel = 1.0f;
         float m_AspectRatio;
         

@@ -26,8 +26,8 @@ void MainLayer::onAttach()
     //m_FlatColourShader = new Shader("CrudeAssets/shadersources/colourShader.vs", "CrudeAssets/shadersources/colourShader.fs");
     //m_TextureShader = new Shader("CrudeAssets/shadersources/textureShader.vs", "CrudeAssets/shadersources/textureShader.fs");
     
-    m_FlatColourShader.loadFromFile("CrudeAssets/shadersources/colourShader.vs", "CrudeAssets/shadersources/colourShader.fs");
-    m_TextureShader.loadFromFile("CrudeAssets/shadersources/textureShader.vs", "CrudeAssets/shadersources/textureShader.fs");
+    m_FlatColourShader.loadFromFile("examples/CrudeAssets/shadersources/colourShader.vs", "examples/CrudeAssets/shadersources/colourShader.fs");
+    m_TextureShader.loadFromFile("examples/CrudeAssets/shadersources/textureShader.vs", "examples/CrudeAssets/shadersources/textureShader.fs");
     
     
     //m_Shader = std::make_unique<Shader>("/Users/Herve/Documents/CrudeRender/CrudeRender/assets/shadersources/mainShader.vs", "/Users/Herve/Documents/CrudeRender/CrudeRender/assets/shadersources/mainShader.fs");
@@ -56,8 +56,6 @@ void MainLayer::onAttach()
     
     m_vao.bind();
     
-
-
     static VertexBuffer vbo(vertices, sizeof(vertices));
     VertexBufferLayout layout;
     layout.pushFloat(3);
@@ -100,10 +98,10 @@ void MainLayer::onAttach()
     m_TextureLibrary.add("container", *m_ContainerTexture);
     m_TextureLibrary.add("awesomeface", *m_FaceTexture);
     m_TextureLibrary.add("circle", *m_BlendTexture);*/
-    m_TextureLibrary.load("container", "CrudeAssets/textures/container.png");
-    m_TextureLibrary.load("awesomeface", "CrudeAssets/textures/awesomeface.png");
-    m_TextureLibrary.load("circle", "CrudeAssets/textures/circleSprite.png");
-    m_TextureLibrary.load("square", "CrudeAssets/textures/squareSprite.png");
+    m_TextureLibrary.load("container", "examples/CrudeAssets/textures/container.png");
+    m_TextureLibrary.load("awesomeface", "examples/CrudeAssets/textures/awesomeface.png");
+    m_TextureLibrary.load("circle", "examples/CrudeAssets/textures/circleSprite.png");
+    m_TextureLibrary.load("square", "examples/CrudeAssets/textures/squareSprite.png");
     
     
     m_TextureShader.setInt("u_Texture1", 0);
@@ -189,13 +187,21 @@ void MainLayer::onImGuiRender()
 {
     ImGui::ShowCrudeDockSpace();
     ImGui::ShowDemoWindow();
+    float f3[] {m_OCamController.m_CameraPosition.x, m_OCamController.m_CameraPosition.y, 0.0f};
+    
     
     ImGui::Begin("Vars");
     ImGui::SliderFloat("X", &m_Pos.x, -10.0f, 10.0f);
     ImGui::SliderFloat("Y", &m_Pos.y, -10.0f, 10.0f);
     ImGui::SliderFloat("Z", &m_Pos.z, -10.0f, 10.0f);
+    ImGui::InputFloat3("Camera Pos", f3);
+    
+    
     ImGui::End();
 
+    m_OCamController.m_CameraPosition.x = f3[0];
+    m_OCamController.m_CameraPosition.y = f3[1];
+    m_OCamController.m_CameraPosition.z = f3[2];
     
 }
 

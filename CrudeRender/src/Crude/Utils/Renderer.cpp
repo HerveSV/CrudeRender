@@ -83,9 +83,9 @@ namespace Crude::Utils
             LOG_WARN("Define a shader to use before sumbitting any geometry!");
             return;
         }
-        /*glm::vec4 pos;
-        pos = m_CurrCamera->getViewProjectionMatrix() * modelMat * pos;
-        LOG_TRACE("{0}, {1}, {2}", pos.x, pos.y, pos.z);*/
+        //glm::vec4 pos;
+        //pos = m_CurrCamera->getViewProjectionMatrix() * modelMat * pos;
+        //LOG_TRACE("{0}, {1}, {2}", pos.x, pos.y, pos.z);
         
         m_CurrShader->bind();
         m_CurrShader->setMat4(m_ModelMatrixName, modelMat);

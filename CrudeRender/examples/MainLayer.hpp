@@ -9,8 +9,8 @@
 #ifndef MainLayer_hpp
 #define MainLayer_hpp
 
-#include "src/CrudeRender.h"
-#include "src/CrudeRenderUtils.h"
+#include "../src/CrudeRender.h"
+#include "../src/CrudeRenderUtils.h"
 
 
 

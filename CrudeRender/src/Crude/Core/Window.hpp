@@ -50,6 +50,7 @@ namespace Crude
         
         uint32_t getWidth() const { return m_Data.Width; }
         uint32_t getHeight() const { return m_Data.Height; }
+        std::pair<uint32_t, uint32_t> getDimensions() const { return {m_Data.Width, m_Data.Height}; };
         std::string getName() const { return m_Data.Title; }
         
         // Window attributes
