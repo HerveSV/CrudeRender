@@ -46,7 +46,26 @@ namespace Crude::Utils
         }
         m_CurrShader = &shader;
         m_CurrShader->bind();
-        m_CurrShader->setMat4(m_ViewProjectionMatrixName, m_CurrCamera->getViewProjectionMatrix());
+        switch (m_VPconfig)
+        {
+            case ViewProjectionConfig::PreMultiplied:
+                m_CurrShader->setMat4(m_ViewProjectionMatrixName, m_CurrCamera->getViewProjectionMatrix());
+                break;
+            case ViewProjectionConfig::Separate:
+                m_CurrShader->setMat4(m_ViewMatrixName, m_CurrCamera->getViewMatrix());
+                m_CurrShader->setMat4(m_ProjectionMatrixName, m_CurrCamera->getProjectionMatrix());
+                break;
+            case ViewProjectionConfig::PreMultipliedAndSeparate:
+                m_CurrShader->setMat4(m_ViewProjectionMatrixName, m_CurrCamera->getViewProjectionMatrix());
+                
+                m_CurrShader->setMat4(m_ViewMatrixName, m_CurrCamera->getViewMatrix());
+                m_CurrShader->setMat4(m_ProjectionMatrixName, m_CurrCamera->getProjectionMatrix());
+                break;
+            default:
+                LOG_ERROR("Unsupported ViewProjectionConfig");
+                break;
+        }
+        //m_CurrShader->setMat4(m_ViewProjectionMatrixName, m_CurrCamera->getViewProjectionMatrix());
         m_ShaderActive = true;
     }
     

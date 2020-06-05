@@ -22,7 +22,7 @@ namespace Crude::Utils
     {
     public:
         
-        enum class ShaderViewProjectionConfig
+        enum class ViewProjectionConfig
         {
             PreMultiplied,
             Separate,
@@ -38,6 +38,8 @@ namespace Crude::Utils
         
         static void submit(const VertexArray& vao, const glm::mat4& modelMat);
         
+        static void setViewProjectionConfig(ViewProjectionConfig config);
+        
         //static void draw(const VertexArray& vao, const glm::mat4& modelMat);
         //static void draw(const VertexArray& vao, const glm::vec4& colour, const glm::mat4& modelMat);
         
@@ -50,6 +52,8 @@ namespace Crude::Utils
 
         inline static Camera* m_CurrCamera;
         inline static Shader* m_CurrShader;
+        
+        inline static ViewProjectionConfig m_VPconfig = ViewProjectionConfig::PreMultiplied;
         //inline static std::unordered_map<std::string, Shader*> m_ShaderCache;
         
         
