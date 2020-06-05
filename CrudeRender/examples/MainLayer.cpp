@@ -236,5 +236,5 @@ bool MainLayer::onKeyTypedEvent(Crude::KeyTypedEvent& event)
 
 void MainLayer::onDetach()
 {
-    
+    LOG_TRACE("DETATCHED");
 }

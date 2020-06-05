@@ -20,6 +20,7 @@ namespace Crude
     {
         for(Layer* layer : m_Layers)
         {
+            layer->onDetach();
             delete layer;
         }
     }
