@@ -10,6 +10,9 @@
 #include "Application.hpp"
 #include "GLFW/glfw3.h"
 
+#ifdef CRD_PLATFORM_MACOS
+    #include "../Platforms/macOS/macOSInput.hpp"
+#endif
 
 namespace Crude
 {
